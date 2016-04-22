@@ -15,6 +15,8 @@ unsigned long leftWheelCount = 0;       //global variable to track hole/space co
 unsigned long rightWheelCount = 0;      //global variable to track hole/space count of right wheel
 unsigned long elapsedMillis = 0;        //global variable to track time ticks in milliseconds
 unsigned long speedElapsedMillis = 0;   //global variable to track instantaneous elapsed time
+unsigned long rightWheelDistance = 0;   //global variable to track right wheel distance
+unsigned long leftWheelDistance = 0;    //global variable to track left wheel distance
 
 void main(void) 
 {
@@ -27,6 +29,10 @@ void main(void)
         leftWheelSpeed = leftWheelCount * 5.3996 / (elapsedMillis - speedElapsedMillis);   
         //sets the speedElapsedMillis the same as the current time tick
         speedElapsedMillis = elapsedMillis;
+        //This tracks the right wheel distance in millimeters
+        rightWheelDistance = rightWheelCount * 5.3996;
+        //This tracks the left wheel distance in millimeters
+        leftWheelDistance = leftWheelCount * 5.3996;
     }
     return;
 }
