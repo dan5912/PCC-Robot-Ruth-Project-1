@@ -23,7 +23,7 @@ void main(void)
     CM1CON0bits.C1POL  = 0;     // C1OUT logic is not inverted
     CM1CON0bits.C1SP   = 1;     // operates in Normal-Power, Higher Speed mode
     CM1CON0bits.C1R    = 1;     // C1VIN+ connects to C1VREF output  
-    CM1CON0bits.C1CH   = 0b11;  // pin of C1 connects to C1VIN-   
+    CM1CON0bits.C1CH   = 0b11;  // pin of C1 connects to C1VIN- (aka RB1)  
     CM1CON0bits.C1ON   = 1;     // Comparator C1 is enabled    
     
     return;
