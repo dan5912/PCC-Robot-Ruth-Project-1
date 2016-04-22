@@ -1,0 +1,1040 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$dist/default/debug/PCCRuthPRJ1.X.debug.obj
+cinit CODE 0 21CC 21CC 1E 1
+text0 CODE 0 101A 101A 722 1
+text1 CODE 0 1AE8 1AE8 FC 1
+text2 CODE 0 1BE4 1BE4 F4 1
+text3 CODE 0 1CD8 1CD8 F4 1
+text4 CODE 0 193C 193C 1AC 1
+text5 CODE 0 216E 216E 38 1
+text6 CODE 0 173C 173C 200 1
+text7 CODE 0 224A 224A A 1
+text8 CODE 0 221C 221C 12 1
+text9 CODE 0 21EA 21EA 1E 1
+text10 CODE 0 21A6 21A6 26 1
+text11 CODE 0 212C 212C 42 1
+text12 CODE 0 20DA 20DA 52 1
+text13 CODE 0 1E92 1E92 AE 1
+text14 CODE 0 207E 207E 5C 1
+text15 CODE 0 1F40 1F40 AE 1
+text16 CODE 0 1FEE 1FEE 90 1
+text17 CODE 0 1DCC 1DCC C6 1
+text18 CODE 0 222E 222E 10 1
+text19 CODE 0 223E 223E C 1
+text20 CODE 0 2208 2208 14 1
+cstackCOMRAM COMRAM 1 1 1 4B 1
+cstackBANK0 BANK0 1 60 60 1C 1
+temp COMRAM 1 4E 4E 1 1
+bssBANK0 BANK0 1 7C 7C C 1
+intcode CODE 0 8 8 124 1
+smallconst SMALLCONST 0 1000 1000 1A 1
+bssCOMRAM COMRAM 1 4C 4C 2 1
+$/tmp/xchlPRwbU.obj
+idloc IDLOC 0 200000 200000 8 1
+reset_vec CODE 0 0 0 6 1
+end_init CODE 0 12C 12C 4 1
+config CONFIG 0 300000 300000 E 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 88-F37 1
+SFR F38-FFC 1
+BANK0 88-FF 1
+BANK1 100-1FF 1
+BANK2 200-2FF 1
+BANK3 300-3FF 1
+BANK4 400-4FF 1
+BANK5 500-5FF 1
+BANK6 600-6FF 1
+BANK7 700-7FF 1
+BANK8 800-8FF 1
+BANK9 900-9FF 1
+CONST 6-7 1
+CONST 130-FFF 1
+CONST 2254-FFFF 1
+STACK 88-F37 1
+SMALLCONST 2254-FFFF 1
+CODE 6-7 1
+CODE 130-FFF 1
+CODE 2254-FFFF 1
+BANK10 A00-AFF 1
+BANK11 B00-BFF 1
+BANK12 C00-CFF 1
+BANK13 D00-DFF 1
+BANK14 E00-EFF 1
+BANK15 F00-F37 1
+BIGRAM 4F-5F 1
+BIGRAM 88-F37 1
+COMRAM 4F-5F 1
+EEDATA F00000-F003FF 1
+MEDIUMCONST 2254-FFFF 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/debug/PCCRuthPRJ1.X.debug.obj
+8 intcode CODE >116:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+8 intcode CODE >362:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+42 intcode CODE >364:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+48 intcode CODE >367:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+54 intcode CODE >369:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+56 intcode CODE >370:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+72 intcode CODE >371:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+74 intcode CODE >372:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+74 intcode CODE >374:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+76 intcode CODE >375:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+7E intcode CODE >376:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+7E intcode CODE >377:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+88 intcode CODE >378:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+8A intcode CODE >382:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+90 intcode CODE >385:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+A0 intcode CODE >387:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+A2 intcode CODE >388:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+C2 intcode CODE >389:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+C4 intcode CODE >390:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+C4 intcode CODE >392:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+C6 intcode CODE >393:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+D0 intcode CODE >394:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+D0 intcode CODE >395:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+D8 intcode CODE >396:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+DA intcode CODE >401:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+E0 intcode CODE >403:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+EE intcode CODE >404:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+F0 intcode CODE >406:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+2208 text20 CODE >101:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2208 text20 CODE >103:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+220A text20 CODE >104:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+220C text20 CODE >105:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+220E text20 CODE >109:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+220E text20 CODE >111:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2210 text20 CODE >112:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2212 text20 CODE >109:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2216 text20 CODE >114:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2218 text20 CODE >115:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+221A text20 CODE >116:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+223E text19 CODE >94:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2240 text19 CODE >96:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2244 text19 CODE >97:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2246 text19 CODE >98:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2248 text19 CODE >99:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+222E text18 CODE >142:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+222E text18 CODE >144:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2230 text18 CODE >145:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2232 text18 CODE >146:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2238 text18 CODE >147:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+223C text18 CODE >148:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1DCC text17 CODE >60:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1DCC text17 CODE >63:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1DD0 text17 CODE >64:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1DD2 text17 CODE >65:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1DD4 text17 CODE >66:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1DD6 text17 CODE >69:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1DD8 text17 CODE >70:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1DDA text17 CODE >71:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1DDC text17 CODE >73:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1DEC text17 CODE >74:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1DF2 text17 CODE >75:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E02 text17 CODE >76:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E08 text17 CODE >77:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E18 text17 CODE >78:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E1E text17 CODE >79:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E2E text17 CODE >80:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E34 text17 CODE >81:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E44 text17 CODE >82:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E4A text17 CODE >83:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E5A text17 CODE >84:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E60 text17 CODE >85:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E70 text17 CODE >86:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E76 text17 CODE >87:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E86 text17 CODE >90:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E8C text17 CODE >91:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1E90 text17 CODE >92:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+1FEE text16 CODE >4:/Applications/microchip/xc8/v1.36/sources/common/ftge.c
+1FEE text16 CODE >6:/Applications/microchip/xc8/v1.36/sources/common/ftge.c
+1FF2 text16 CODE >7:/Applications/microchip/xc8/v1.36/sources/common/ftge.c
+201E text16 CODE >8:/Applications/microchip/xc8/v1.36/sources/common/ftge.c
+2022 text16 CODE >9:/Applications/microchip/xc8/v1.36/sources/common/ftge.c
+204E text16 CODE >10:/Applications/microchip/xc8/v1.36/sources/common/ftge.c
+205A text16 CODE >11:/Applications/microchip/xc8/v1.36/sources/common/ftge.c
+2066 text16 CODE >12:/Applications/microchip/xc8/v1.36/sources/common/ftge.c
+1F40 text15 CODE >62:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1F40 text15 CODE >64:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1F50 text15 CODE >65:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1F5E text15 CODE >67:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1F60 text15 CODE >68:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1F68 text15 CODE >66:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1F86 text15 CODE >71:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1F88 text15 CODE >72:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1F94 text15 CODE >73:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1F9C text15 CODE >70:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1FBA text15 CODE >76:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1FBC text15 CODE >77:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1FC4 text15 CODE >75:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1FCE text15 CODE >79:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1FD0 text15 CODE >80:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1FD2 text15 CODE >81:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1FD6 text15 CODE >82:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1FDA text15 CODE >83:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1FDE text15 CODE >84:/Applications/microchip/xc8/v1.36/sources/common/float.c
+1FE0 text15 CODE >85:/Applications/microchip/xc8/v1.36/sources/common/float.c
+207E text14 CODE >35:/Applications/microchip/xc8/v1.36/sources/common/lltoft.c
+207E text14 CODE >38:/Applications/microchip/xc8/v1.36/sources/common/lltoft.c
+2082 text14 CODE >41:/Applications/microchip/xc8/v1.36/sources/common/lltoft.c
+2084 text14 CODE >42:/Applications/microchip/xc8/v1.36/sources/common/lltoft.c
+208E text14 CODE >43:/Applications/microchip/xc8/v1.36/sources/common/lltoft.c
+2090 text14 CODE >41:/Applications/microchip/xc8/v1.36/sources/common/lltoft.c
+20B4 text14 CODE >45:/Applications/microchip/xc8/v1.36/sources/common/lltoft.c
+1E92 text13 CODE >316:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1E92 text13 CODE >321:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1EAE text13 CODE >323:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1EBE text13 CODE >325:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1ED8 text13 CODE >327:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1EE8 text13 CODE >330:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1F04 text13 CODE >332:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1F14 text13 CODE >334:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1F2E text13 CODE >336:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+20DA text12 CODE >8:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+20DA text12 CODE >14:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+20E2 text12 CODE >15:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+20EA text12 CODE >16:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+20EE text12 CODE >17:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+20F0 text12 CODE >18:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+20F6 text12 CODE >19:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+20F8 text12 CODE >17:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+20FC text12 CODE >22:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+2102 text12 CODE >23:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+210E text12 CODE >24:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+2116 text12 CODE >25:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+2118 text12 CODE >27:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+211E text12 CODE >28:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+2122 text12 CODE >29:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+2122 text12 CODE >30:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+212A text12 CODE >31:/Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
+212C text11 CODE >8:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+212C text11 CODE >13:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+2134 text11 CODE >14:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+2138 text11 CODE >15:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+213A text11 CODE >16:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+2140 text11 CODE >17:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+2142 text11 CODE >15:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+2146 text11 CODE >20:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+2152 text11 CODE >21:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+215A text11 CODE >22:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+2160 text11 CODE >23:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+2164 text11 CODE >24:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+2164 text11 CODE >25:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+216C text11 CODE >26:/Applications/microchip/xc8/v1.36/sources/common/lwmod.c
+21A6 text10 CODE >15:/Applications/microchip/xc8/v1.36/sources/common/Umul16.c
+21A6 text10 CODE >37:/Applications/microchip/xc8/v1.36/sources/common/Umul16.c
+21B2 text10 CODE >38:/Applications/microchip/xc8/v1.36/sources/common/Umul16.c
+21BA text10 CODE >39:/Applications/microchip/xc8/v1.36/sources/common/Umul16.c
+21C2 text10 CODE >52:/Applications/microchip/xc8/v1.36/sources/common/Umul16.c
+21EA text9 CODE >8:/Applications/microchip/xc8/v1.36/sources/common/isdigit.c
+21EC text9 CODE >14:/Applications/microchip/xc8/v1.36/sources/common/isdigit.c
+221C text8 CODE >118:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+221E text8 CODE >120:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2220 text8 CODE >121:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2222 text8 CODE >122:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+2228 text8 CODE >123:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+222C text8 CODE >124:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/lcd.c
+224A text7 CODE >12:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/printfLib.c
+224C text7 CODE >13:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/printfLib.c
+2252 text7 CODE >14:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/printfLib.c
+173C text6 CODE >464:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+173C text6 CODE >533:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1744 text6 CODE >536:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1746 text6 CODE >538:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+174E text6 CODE >541:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1754 text6 CODE >542:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1756 text6 CODE >546:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+175E text6 CODE >548:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1762 text6 CODE >597:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1776 text6 CODE >598:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+177E text6 CODE >600:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+179A text6 CODE >601:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+17C6 text6 CODE >602:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+17DA text6 CODE >635:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1800 text6 CODE >1259:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1818 text6 CODE >1261:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+181C text6 CODE >1262:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1820 text6 CODE >1263:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1828 text6 CODE >1305:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1834 text6 CODE >1306:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1854 text6 CODE >1305:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1858 text6 CODE >1345:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+186C text6 CODE >1346:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1872 text6 CODE >1381:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1888 text6 CODE >1382:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1896 text6 CODE >1384:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+189E text6 CODE >1428:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+18A6 text6 CODE >1430:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+18AC text6 CODE >1431:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+18BA text6 CODE >1438:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+18C6 text6 CODE >1439:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+18CC text6 CODE >1472:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+18D0 text6 CODE >1474:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+18D2 text6 CODE >1489:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1914 text6 CODE >1524:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+191A text6 CODE >1474:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+1922 text6 CODE >536:/Applications/microchip/xc8/v1.36/sources/common/doprnt.c
+216E text5 CODE >32:/Applications/microchip/xc8/v1.36/sources/common/awtoft.c
+216E text5 CODE >36:/Applications/microchip/xc8/v1.36/sources/common/awtoft.c
+2172 text5 CODE >37:/Applications/microchip/xc8/v1.36/sources/common/awtoft.c
+2176 text5 CODE >38:/Applications/microchip/xc8/v1.36/sources/common/awtoft.c
+217E text5 CODE >39:/Applications/microchip/xc8/v1.36/sources/common/awtoft.c
+2182 text5 CODE >41:/Applications/microchip/xc8/v1.36/sources/common/awtoft.c
+193C text4 CODE >86:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+193C text4 CODE >90:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1950 text4 CODE >91:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1964 text4 CODE >92:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1980 text4 CODE >93:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+198E text4 CODE >94:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19AA text4 CODE >95:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19B8 text4 CODE >96:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19BC text4 CODE >97:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19BE text4 CODE >98:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19C0 text4 CODE >99:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19C2 text4 CODE >100:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19C4 text4 CODE >101:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19C6 text4 CODE >102:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19D2 text4 CODE >103:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19D4 text4 CODE >104:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19E0 text4 CODE >106:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19E8 text4 CODE >110:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19F0 text4 CODE >111:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+19F2 text4 CODE >112:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A0A text4 CODE >114:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A12 text4 CODE >115:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A14 text4 CODE >113:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A1E text4 CODE >117:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A26 text4 CODE >121:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A2E text4 CODE >122:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A30 text4 CODE >123:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A48 text4 CODE >125:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A50 text4 CODE >126:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A52 text4 CODE >124:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A5A text4 CODE >129:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A5E text4 CODE >131:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A6A text4 CODE >132:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A76 text4 CODE >133:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A76 text4 CODE >134:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A7A text4 CODE >136:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A86 text4 CODE >137:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A92 text4 CODE >139:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1A96 text4 CODE >140:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1AA2 text4 CODE >141:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1AA6 text4 CODE >142:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1AB2 text4 CODE >143:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1ABE text4 CODE >144:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1AC2 text4 CODE >146:/Applications/microchip/xc8/v1.36/sources/common/ftadd.c
+1CD8 text3 CODE >62:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1CD8 text3 CODE >67:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1CF2 text3 CODE >68:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D00 text3 CODE >69:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D1A text3 CODE >70:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D28 text3 CODE >71:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D2E text3 CODE >72:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D32 text3 CODE >73:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D36 text3 CODE >74:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D3A text3 CODE >75:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D3C text3 CODE >77:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D3E text3 CODE >78:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D4A text3 CODE >79:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D56 text3 CODE >134:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D5A text3 CODE >136:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D5E text3 CODE >137:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D6A text3 CODE >138:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D72 text3 CODE >139:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D7A text3 CODE >140:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D7E text3 CODE >143:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D82 text3 CODE >145:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D86 text3 CODE >146:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D92 text3 CODE >147:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1D9A text3 CODE >148:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1DA2 text3 CODE >149:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1DA6 text3 CODE >156:/Applications/microchip/xc8/v1.36/sources/common/ftmul.c
+1BE4 text2 CODE >44:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1BE4 text2 CODE >49:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1BFE text2 CODE >50:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C10 text2 CODE >51:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C36 text2 CODE >52:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C38 text2 CODE >53:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C44 text2 CODE >54:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C52 text2 CODE >55:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C56 text2 CODE >56:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C5A text2 CODE >57:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C64 text2 CODE >58:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C76 text2 CODE >60:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C80 text2 CODE >61:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C84 text2 CODE >62:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C86 text2 CODE >63:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C8C text2 CODE >64:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1C9E text2 CODE >66:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1CA8 text2 CODE >67:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1CAA text2 CODE >65:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1CB0 text2 CODE >70:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1CB6 text2 CODE >71:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1CC6 text2 CODE >72:/Applications/microchip/xc8/v1.36/sources/common/fttol.c
+1AE8 text1 CODE >340:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1AEC text1 CODE >342:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1AF6 text1 CODE >346:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1B52 text1 CODE >347:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1B58 text1 CODE >348:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1B5C text1 CODE >351:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1B66 text1 CODE >355:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1BD6 text1 CODE >356:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1BDE text1 CODE >357:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+101A text0 CODE >100:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+101A text0 CODE >102:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1022 text0 CODE >104:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1024 text0 CODE >111:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1028 text0 CODE >112:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+102C text0 CODE >113:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1032 text0 CODE >114:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1038 text0 CODE >115:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+103A text0 CODE >121:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1040 text0 CODE >122:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1044 text0 CODE >123:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+104E text0 CODE >124:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1056 text0 CODE >125:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1058 text0 CODE >126:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+105A text0 CODE >131:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1060 text0 CODE >132:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+106A text0 CODE >134:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1074 text0 CODE >135:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+107C text0 CODE >139:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+107E text0 CODE >140:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1082 text0 CODE >141:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1086 text0 CODE >142:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1088 text0 CODE >148:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+108A text0 CODE >149:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+108C text0 CODE >151:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+108E text0 CODE >152:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1092 text0 CODE >154:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1094 text0 CODE >156:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1096 text0 CODE >157:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1098 text0 CODE >159:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+109A text0 CODE >160:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+109E text0 CODE >163:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+10B0 text0 CODE >164:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+10C2 text0 CODE >166:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+10C8 text0 CODE >168:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+10D2 text0 CODE >169:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+10DC text0 CODE >170:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+10E6 text0 CODE >172:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+10EA text0 CODE >173:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+10FC text0 CODE >174:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1100 text0 CODE >175:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1114 text0 CODE >192:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+111C text0 CODE >194:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+112E text0 CODE >195:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1130 text0 CODE >197:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1146 text0 CODE >199:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1162 text0 CODE >200:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+117E text0 CODE >202:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1194 text0 CODE >204:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+11B2 text0 CODE >205:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+11D0 text0 CODE >207:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+121C text0 CODE >210:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1224 text0 CODE >211:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+123A text0 CODE >213:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1286 text0 CODE >216:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+128C text0 CODE >217:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+12A2 text0 CODE >219:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+12BA text0 CODE >221:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+12CC text0 CODE >222:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+12DE text0 CODE >223:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+12F6 text0 CODE >224:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+130E text0 CODE >225:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+130E text0 CODE >228:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1312 text0 CODE >229:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1316 text0 CODE >231:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+132A text0 CODE >232:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+132C text0 CODE >236:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1342 text0 CODE >238:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+135E text0 CODE >239:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+137C text0 CODE >241:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1392 text0 CODE >243:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+13B0 text0 CODE >244:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+13CC text0 CODE >246:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1418 text0 CODE >249:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+141E text0 CODE >250:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1434 text0 CODE >252:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1480 text0 CODE >255:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1488 text0 CODE >256:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+149E text0 CODE >259:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+14B6 text0 CODE >261:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+14C8 text0 CODE >262:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+14DA text0 CODE >263:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+14F2 text0 CODE >264:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+150A text0 CODE >265:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+150A text0 CODE >268:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+150E text0 CODE >269:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1512 text0 CODE >271:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1526 text0 CODE >272:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1528 text0 CODE >275:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+153E text0 CODE >277:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+155A text0 CODE >278:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1576 text0 CODE >279:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1576 text0 CODE >280:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+15EA text0 CODE >283:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+15F2 text0 CODE >284:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1608 text0 CODE >286:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+167C text0 CODE >289:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1682 text0 CODE >290:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1698 text0 CODE >292:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+16B2 text0 CODE >294:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+16C4 text0 CODE >295:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+16D6 text0 CODE >296:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+16EE text0 CODE >297:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1706 text0 CODE >298:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1706 text0 CODE >301:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+170A text0 CODE >302:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+170E text0 CODE >304:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1722 text0 CODE >306:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+1724 text0 CODE >195:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+173A text0 CODE >179:/Users/daniel/MPLABXProjects/PCCRuthPRJ1.X/main.c
+21CC cinit CODE >1901:/tmp/xc0MWwBOt
+21CC cinit CODE >1903:/tmp/xc0MWwBOt
+21CC cinit CODE >1906:/tmp/xc0MWwBOt
+21CC cinit CODE >1931:/tmp/xc0MWwBOt
+21D0 cinit CODE >1932:/tmp/xc0MWwBOt
+21D2 cinit CODE >1933:/tmp/xc0MWwBOt
+21D2 cinit CODE >1934:/tmp/xc0MWwBOt
+21D4 cinit CODE >1935:/tmp/xc0MWwBOt
+21D6 cinit CODE >1936:/tmp/xc0MWwBOt
+21D8 cinit CODE >1939:/tmp/xc0MWwBOt
+21DA cinit CODE >1940:/tmp/xc0MWwBOt
+21DC cinit CODE >1946:/tmp/xc0MWwBOt
+21DC cinit CODE >1948:/tmp/xc0MWwBOt
+21DE cinit CODE >1949:/tmp/xc0MWwBOt
+21E0 cinit CODE >1951:/tmp/xc0MWwBOt
+21E2 cinit CODE >1952:/tmp/xc0MWwBOt
+21E4 cinit CODE >1953:/tmp/xc0MWwBOt
+21E6 cinit CODE >1954:/tmp/xc0MWwBOt
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+putch@data 13 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___lwmod@counter 1C 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hspace_0 30000E 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hspace_1 88 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hspace_2 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_IESO$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+LCDwrite@input 12 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hibigdata 0 0 CODE 0 ibigdata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_LCDgotoLineTwo 222E 0 CODE 0 text18 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xchlPRwbU.obj
+___awtoft@sign 1C 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_LCDcmd 224A 0 CODE 0 text19 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of_LCDcheckBF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_T1CONbits FCD 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lsmallconst 1000 0 SMALLCONST 0 smallconst dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_LATA F89 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_TMR1 FCE 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_TMR3 FB2 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_TMR5 F4F 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___sp 0 0 STACK 2 stack /tmp/xchlPRwbU.obj
+_main 101A 0 CODE 0 text0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+btemp 4E 0 COMRAM 1 temp dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftadd@f1 31 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftadd@f2 34 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+start 12C 0 CODE 0 init /tmp/xchlPRwbU.obj
+__size_of___ftadd 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of___ftmul 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of___fttol 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of_main 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of___lwdiv 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of___lwmod 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_WDTEN$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+?___wmul 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+LCDcmd@command 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of_LCDinit 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+main@controlLastMillis 6D 0 BANK0 1 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_rightWheelMeasuredSpeed 4C 0 COMRAM 1 bssCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_CCP2MX$PORTB3 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hpowerup 12C 0 CODE 0 powerup dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_LCDwrite 221C 0 CODE 0 text8 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+printf@c 2D 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+printf@f 1D 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftge@ff1 31 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftge@ff2 34 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_CCP3MX$PORTB5 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of_wheelVelocity 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+limitWheelSpeeds@leftWheelSpeed 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__accesstop 60 0 ABS 0 - /tmp/xchlPRwbU.obj
+intlevel0 0 0 CODE 0 text /tmp/xchlPRwbU.obj
+intlevel1 0 0 CODE 0 text /tmp/xchlPRwbU.obj
+intlevel2 0 0 CODE 0 text /tmp/xchlPRwbU.obj
+intlevel3 0 0 CODE 0 text /tmp/xchlPRwbU.obj
+__LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_LCDwrite 222E 0 CODE 0 text8 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_OSCCONbits FD3 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_LCDgotoLineTwo 223E 0 CODE 0 text18 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_EBTR0$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_EBTR1$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_EBTR2$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_EBTR3$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_EBTRB$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_P2BMX$PORTD2 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hifardata 0 0 CODE 0 ifardata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hclrtext 0 0 ABS 0 clrtext dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftmul@f1 22 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftmul@f2 25 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_PRICLKEN$ON 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___wmul@multiplicand 13 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+printf@flag 28 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+printf@prec 27 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_FOSC$INTIO67 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_wheelVelocity 1BE4 0 CODE 0 text1 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___inthi_sp 0 0 STACK 2 stack /tmp/xchlPRwbU.obj
+printf@width 2B 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___intlo_sp 0 0 STACK 2 stack /tmp/xchlPRwbU.obj
+__size_of___awtoft 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCP2IE 7D00 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCP2IF 7D08 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCP3IE 7BD0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCP3IF 7BD8 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCPR1H FBF 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCPR1L FBE 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCPR3H F5F 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCPR3L F5E 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hintcode_body 0 0 ABS 0 intcode_body dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of___ftge 207E 0 CODE 0 text16 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of___wmul 21CC 0 CODE 0 text10 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___fttol@f1 3D 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/debug/PCCRuthPRJ1.X.debug.obj
+?_printf 1D 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hintcodelo 12C 0 CODE 0 intcodelo dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___lwmod@divisor 1A 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of___ftpack 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of___ftadd 1AE8 0 CODE 0 text4 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of___ftmul 1DCC 0 CODE 0 text3 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of___fttol 1CD8 0 CODE 0 text2 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of___lwdiv 212C 0 CODE 0 text12 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of___lwmod 216E 0 CODE 0 text11 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of_isdigit 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_LCDinit 1E92 0 CODE 0 text17 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_dpowers 1001 0 SMALLCONST 0 smallconst dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___lwdiv@quotient 15 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_LCDcmd 223E 0 CODE 0 text19 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of_putch 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of___lltoft 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___lwmod@dividend 18 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lintcodelo 12C 0 CODE 0 intcodelo dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+start_initialization 21CC 0 CODE 0 cinit dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___awtoft 216E 0 CODE 0 text5 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_TRISAbits F92 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_TRISBbits F93 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_TRISCbits F94 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_TRISEbits F96 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___rparam_used 1 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+limitWheelSpeeds@rightWheelSpeed 13 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_WDTPS$32768 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of___awtoft 21A6 0 CODE 0 text5 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__pcstackBANK0 60 0 BANK0 1 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___fttol@exp1 4B 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___fttol@lval 47 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_TMR1ON 7E68 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_TMR2IE 7CE9 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_TMR2IF 7CF1 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_TMR5ON 7A70 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___lltoft@c 19 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftpack 1F40 0 CODE 0 text15 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_printf 193C 0 CODE 0 text6 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+wheelVelocity@speedCompensation 62 0 BANK0 1 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftpack@arg 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftpack@exp 14 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of_LCDcmd 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of___ftpack 1FEE 0 CODE 0 text15 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank0 0 0 ABS 0 bank0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank1 0 0 ABS 0 bank1 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank2 0 0 ABS 0 bank2 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank3 0 0 ABS 0 bank3 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank4 0 0 ABS 0 bank4 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank5 0 0 ABS 0 bank5 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank6 0 0 ABS 0 bank6 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank7 0 0 ABS 0 bank7 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank8 0 0 ABS 0 bank8 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank9 0 0 ABS 0 bank9 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hcinit 0 0 ABS 0 cinit dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hconst 0 0 CONST 0 const dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hidata 0 0 CODE 0 idata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hidloc 200008 0 IDLOC 0 idloc dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hnvbit 0 0 COMRAM 1 nvbit dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hparam 0 0 COMRAM 1 rparam dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hrdata 0 0 COMRAM 1 rdata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hstack 0 0 STACK 2 stack dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext0 0 0 ABS 0 text0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext1 0 0 ABS 0 text1 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext2 0 0 ABS 0 text2 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext3 0 0 ABS 0 text3 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext4 0 0 ABS 0 text4 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext5 0 0 ABS 0 text5 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext6 0 0 ABS 0 text6 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext7 0 0 ABS 0 text7 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext8 0 0 ABS 0 text8 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext9 0 0 ABS 0 text9 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___lwdiv@counter 17 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank10 0 0 ABS 0 bank10 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank11 0 0 ABS 0 bank11 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank12 0 0 ABS 0 bank12 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank13 0 0 ABS 0 bank13 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank14 0 0 ABS 0 bank14 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbank15 0 0 ABS 0 bank15 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbigbss 0 0 BIGRAM 1 bigbss dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbigram 0 0 ABS 0 bigram dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__smallconst 1000 0 SMALLCONST 0 smallconst /tmp/xchlPRwbU.obj
+___lltoft 207E 0 CODE 0 text14 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hcomram 0 0 ABS 0 comram dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hconfig 30000E 0 CONFIG 0 config dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_limitWheelSpeeds 1E92 0 CODE 0 text13 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank0 0 0 ABS 0 bank0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank1 0 0 ABS 0 bank1 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank2 0 0 ABS 0 bank2 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank3 0 0 ABS 0 bank3 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank4 0 0 ABS 0 bank4 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank5 0 0 ABS 0 bank5 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank6 0 0 ABS 0 bank6 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank7 0 0 ABS 0 bank7 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank8 0 0 ABS 0 bank8 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank9 0 0 ABS 0 bank9 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_isdigit 2208 0 CODE 0 text9 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lcinit 0 0 ABS 0 cinit dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lconst 0 0 CONST 0 const dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lidata 0 0 CODE 0 idata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lidloc 200000 0 IDLOC 0 idloc dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftadd@exp1 3C 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftadd@exp2 3B 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftadd@sign 3A 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lnvbit 0 0 COMRAM 1 nvbit dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lparam 0 0 COMRAM 1 rparam dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lrdata 0 0 COMRAM 1 rdata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lstack 0 0 STACK 2 stack dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext0 0 0 ABS 0 text0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext1 0 0 ABS 0 text1 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext2 0 0 ABS 0 text2 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext3 0 0 ABS 0 text3 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext4 0 0 ABS 0 text4 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext5 0 0 ABS 0 text5 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext6 0 0 ABS 0 text6 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext7 0 0 ABS 0 text7 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext8 0 0 ABS 0 text8 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext9 0 0 ABS 0 text9 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hfarbss 0 0 FARRAM 0 farbss dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of___lltoft 20DA 0 CODE 0 text14 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lintcode_body 0 0 ABS 0 intcode_body dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_PORTAbits F80 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_PORTBbits F81 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_T3CMX$PORTB5 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_INTCONbits FF2 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Habs1 0 0 ABS 0 abs1 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hdata 0 0 ABS 0 data dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hinit 12C 0 CODE 0 init dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hrbit 0 0 COMRAM 1 rbit dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hrbss 0 0 COMRAM 1 rbss dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htemp 4F 0 COMRAM 1 temp dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext 0 0 ABS 0 text dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Labs1 0 0 ABS 0 abs1 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ldata 0 0 ABS 0 data dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Linit 12C 0 CODE 0 init dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lrbit 0 0 COMRAM 1 rbit dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lrbss 0 0 COMRAM 1 rbss dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltemp 4E 0 COMRAM 1 temp dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext 0 0 ABS 0 text dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_XINST$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftge 1FEE 0 CODE 0 text16 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___wmul 21A6 0 CODE 0 text10 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+int$flags 4E 0 COMRAM 1 temp dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hintret 0 0 ABS 0 intret dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hirdata 0 0 CODE 0 irdata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_ISR 8 0 CODE 0 intcode dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__S0 30000E 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__S1 88 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__S2 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_PBADEN$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___awtoft@c 19 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbigdata 0 0 BIGRAM 1 bigdata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hnvrram 0 0 COMRAM 1 nvrram dist/default/debug/PCCRuthPRJ1.X.debug.obj
+main@leftWheelSpeed 78 0 BANK0 1 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_ISR 12C 0 CODE 0 intcode dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_BORV$190 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lintentry 0 0 ABS 0 intentry dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hramtop 1000 0 RAM 0 ramtop dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hrparam 0 0 COMRAM 1 rparam dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCPTMRS0bits F49 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__activetblptr 2 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hstruct 0 0 COMRAM 1 struct dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of___ftge 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of___wmul 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of_LCDgotoLineTwo 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__LbssBANK0 0 0 ABS 0 bssBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext10 0 0 ABS 0 text10 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext11 0 0 ABS 0 text11 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext12 0 0 ABS 0 text12 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext13 0 0 ABS 0 text13 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext14 0 0 ABS 0 text14 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext15 0 0 ABS 0 text15 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext16 0 0 ABS 0 text16 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext17 0 0 ABS 0 text17 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext18 0 0 ABS 0 text18 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext19 0 0 ABS 0 text19 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Htext20 0 0 ABS 0 text20 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+?___awtoft 19 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_LCDcheckBF 2208 0 CODE 0 text20 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_PIE1bits F9D 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_HFOFST$ON 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext10 21A6 0 CODE 0 text10 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext11 212C 0 CODE 0 text11 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext12 20DA 0 CODE 0 text12 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext13 1E92 0 CODE 0 text13 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext14 207E 0 CODE 0 text14 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext15 1F40 0 CODE 0 text15 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext16 1FEE 0 CODE 0 text16 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext17 1DCC 0 CODE 0 text17 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext18 222E 0 CODE 0 text18 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext19 223E 0 CODE 0 text19 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext20 2208 0 CODE 0 text20 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_limitWheelSpeeds 1F40 0 CODE 0 text13 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftadd 193C 0 CODE 0 text4 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftmul 1CD8 0 CODE 0 text3 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___fttol 1BE4 0 CODE 0 text2 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___lwdiv 20DA 0 CODE 0 text12 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___lwmod 212C 0 CODE 0 text11 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank10 0 0 ABS 0 bank10 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank11 0 0 ABS 0 bank11 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank12 0 0 ABS 0 bank12 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank13 0 0 ABS 0 bank13 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank14 0 0 ABS 0 bank14 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbank15 0 0 ABS 0 bank15 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbigbss 0 0 BIGRAM 1 bigbss dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbigram 0 0 ABS 0 bigram dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lcomram 0 0 ABS 0 comram dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lconfig 300000 0 CONFIG 0 config dist/default/debug/PCCRuthPRJ1.X.debug.obj
+?___ftpack 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_printf 173C 0 CODE 0 text6 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of_limitWheelSpeeds 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_LCDinit 1DCC 0 CODE 0 text17 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___wmul@multiplier 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_elapsedMillis 7C 0 BANK0 1 bssBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_LATCbits F8B 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_LATEbits F8D 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lfarbss 0 0 FARRAM 0 farbss dist/default/debug/PCCRuthPRJ1.X.debug.obj
+main@event 75 0 BANK0 1 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___lwdiv@divisor 13 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lfardata 0 0 FARRAM 0 fardata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+stackhi F37 0 ABS 0 - /tmp/xchlPRwbU.obj
+stacklo 88 0 ABS 0 - /tmp/xchlPRwbU.obj
+__Lintcode 8 0 CODE 0 intcode dist/default/debug/PCCRuthPRJ1.X.debug.obj
+?___lltoft 19 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lintret 0 0 ABS 0 intret dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lirdata 0 0 CODE 0 irdata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lspace_0 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lspace_1 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lspace_2 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftmul@cntr 2F 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__pbssCOMRAM 4C 0 COMRAM 1 bssCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftmul@sign 30 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+wheelVelocity@temp_834 66 0 BANK0 1 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_leftWheelCount 80 0 BANK0 1 bssBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_PIR1bits F9E 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lend_init 12C 0 CODE 0 end_init dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_LVP$ON 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+printf@ap 25 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+end_of_initialization 21DC 0 CODE 0 cinit dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_LCDcheckBF 221C 0 CODE 0 text20 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_T5CONbits F4E 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lnvrram 0 0 COMRAM 1 nvrram dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hintentry 0 0 ABS 0 intentry dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_STVREN$ON 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of_printf 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___lwdiv@dividend 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+?___ftadd 31 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+?___ftmul 22 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+?___fttol 3D 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+?___lwdiv 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+?___lwmod 18 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hreset_vec 6 0 CODE 0 reset_vec dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lramtop 1000 0 RAM 0 ramtop dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lrparam 0 0 COMRAM 1 rparam dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__pcinit 21CC 0 CODE 0 cinit dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___lltoft@exp 21 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext0 101A 0 CODE 0 text0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext1 1AE8 0 CODE 0 text1 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext2 1BE4 0 CODE 0 text2 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext3 1CD8 0 CODE 0 text3 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext4 193C 0 CODE 0 text4 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext5 216E 0 CODE 0 text5 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext6 173C 0 CODE 0 text6 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext7 224A 0 CODE 0 text7 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext8 221C 0 CODE 0 text8 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ptext9 21EA 0 CODE 0 text9 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lstruct 0 0 COMRAM 1 struct dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext10 0 0 ABS 0 text10 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext11 0 0 ABS 0 text11 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext12 0 0 ABS 0 text12 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext13 0 0 ABS 0 text13 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext14 0 0 ABS 0 text14 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext15 0 0 ABS 0 text15 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext16 0 0 ABS 0 text16 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext17 0 0 ABS 0 text17 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext18 0 0 ABS 0 text18 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext19 0 0 ABS 0 text19 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Ltext20 0 0 ABS 0 text20 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__ramtop 1000 0 RAM 0 ramtop /tmp/xchlPRwbU.obj
+__Lpowerup 12C 0 CODE 0 powerup dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_isdigit 21EA 0 CODE 0 text9 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__psmallconst 1000 0 SMALLCONST 0 smallconst dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_rightWheelCount 84 0 BANK0 1 bssBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lreset_vec 0 0 CODE 0 reset_vec dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCP3CONbits F5D 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___param_bank 10 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbigdata 0 0 BIGRAM 1 bigdata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftmul@exp 2B 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of__initialization 21DC 0 CODE 0 cinit dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_WRT0$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_WRT1$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_WRT2$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_WRT3$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_WRTB$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Libigdata 0 0 CODE 0 ibigdata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_WRTC$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_WRTD$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+wheelVelocity@speed 60 0 BANK0 1 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+wheelVelocity@wheel 68 0 BANK0 1 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lclrtext 0 0 ABS 0 clrtext dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftpack@sign 15 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+wheelVelocity@temp 64 0 BANK0 1 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+main@speedCompensation 7A 0 BANK0 1 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hend_init 130 0 CODE 0 end_init dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_BOREN$SBORDIS 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_main 173C 0 CODE 0 text0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCP2CONbits F66 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__pintcode 8 0 CODE 0 intcode dist/default/debug/PCCRuthPRJ1.X.debug.obj
+isdigit@c 13 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+printf@val 29 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCPR2 F67 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCPR3 F5E 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_dpowers 100B 0 SMALLCONST 0 smallconst dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_isdigit$1406 12 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_T1CON FCD 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_T2CON FBA 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_T5CON F4E 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_TRISA F92 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__end_of_putch 2254 0 CODE 0 text7 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_CP0$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_CP1$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__HRAM 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hbss 0 0 RAM 1 bss dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hram 0 0 ABS 0 ram dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hsfr 0 0 ABS 0 sfr dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_wheelVelocity 1AE8 0 CODE 0 text1 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__LRAM 1 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lbss 0 0 RAM 1 bss dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lram 0 0 ABS 0 ram dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lsfr 0 0 ABS 0 sfr dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_CP2$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_CP3$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_PLLCFG$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_CPB$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_putch 224A 0 CODE 0 text7 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_CPD$OFF 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+main@rightWheelSpeed 76 0 BANK0 1 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCP2CON F66 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_CCP3CON F5D 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___fttol@sign1 46 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of_ISR 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+main@lcdLastMillis 71 0 BANK0 1 cstackBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__initialization 21CC 0 CODE 0 cinit dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_PWRTEN$ON 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__pbssBANK0 7C 0 BANK0 1 bssBANK0 dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_T2CONbits FBA 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hfardata 0 0 FARRAM 0 fardata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___wmul@product 15 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hsmallconst 101A 0 SMALLCONST 0 smallconst dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Lifardata 0 0 CODE 0 ifardata dist/default/debug/PCCRuthPRJ1.X.debug.obj
+_ANSELBbits F39 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__size_of_LCDwrite 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__CFG_MCLRE$EXTMCLR 0 0 ABS 0 - dist/default/debug/PCCRuthPRJ1.X.debug.obj
+__Hintcode 12C 0 CODE 0 intcode dist/default/debug/PCCRuthPRJ1.X.debug.obj
+___ftmul@f3_as_product 2C 0 COMRAM 1 cstackCOMRAM dist/default/debug/PCCRuthPRJ1.X.debug.obj
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+idloc 0 200000 200000 8 1
+text0 0 101A 101A 123A 1
+cstackCOMRAM 1 1 1 4E 1
+cstackBANK0 1 60 60 28 1
+reset_vec 0 0 0 6 1
+intcode 0 8 8 128 1
+smallconst 0 1000 1000 1A 1
+config 0 300000 300000 E 1
