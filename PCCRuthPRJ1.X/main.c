@@ -75,22 +75,22 @@
 #include "printfLib.h"
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <math.h>
 // <editor-fold defaultstate="collapsed" desc="Defines">
 
 
-#define CIRCLE_FACTOR 1.25f
+#define CIRCLE_FACTOR 6
 #define HYSTERESIS 1
 
 #define BUTTON PORTBbits.RB0    // B0 is pin interrupt INT0
 
-#define LEFT_WHEEL_NEUTRAL 735
-#define RIGHT_WHEEL_NEUTRAL 720
+#define LEFT_WHEEL_NEUTRAL 745
+#define RIGHT_WHEEL_NEUTRAL 725
 
 #define RIGHT_SPEED_COUNT_RATIO 2.4
 #define LEFT_SPEED_COUNT_RATIO  2.4
 
-#define TOP_SPEED_FACTOR 1
+#define TOP_SPEED_FACTOR 2
 
 #define RADIUS 55                       //radius in millimeters
 #define HOLES 32                        //number of holes in each wheel
@@ -98,13 +98,16 @@
 #define PWM1 LATDbits.LATD0
 #define PWM2 LATDbits.LATD1 
 
-#define CONTROL_MS 300
+#define CONTROL_MS 100
 #define VELOCITY_CALC_MS 500
 #define LCD_UPDATE_MS 1000
 
-#define SPEED_GAIN 2
-#define COMPENSATION_GAIN (rightWheelCount - leftWheelCount)/2
-#define DOWN_COMPENSATION_GAIN (leftWheelCount - rightWheelCount)/2
+#define SPEED_GAIN 1
+#define COMPENSATION_GAIN sqrt(rightWheelCount - leftWheelCount) + 5
+#define DOWN_COMPENSATION_GAIN sqrt(leftWheelCount - rightWheelCount)
+
+#define CIRCLE_COMPENSATION_GAIN sqrt(rightWheelCount - leftWheelCount)
+#define CIRCLE_DOWN_COMPENSATION_GAIN sqrt(leftWheelCount - rightWheelCount)
 
 #define _XTAL_FREQ 8000000
 // </editor-fold>
@@ -212,26 +215,30 @@ void limitWheelSpeeds(int* leftWheelSpeed, int* rightWheelSpeed, int* speedCompe
     // Limit wheel speeds to +- 80 for right wheel and +- 100 for left wheel
     // This allows left wheel to always be able to go faster or slower than the right 
     // wheel for closed loop control
-    if (*leftWheelSpeed >= 50)       
+    if (*leftWheelSpeed >= 60)       
     {
-        *leftWheelSpeed = 50;
+        *leftWheelSpeed = 60;
     }
-    if (*leftWheelSpeed <= -50)
+    if (*leftWheelSpeed <= -60)
     {
-        *leftWheelSpeed = -50;
+        *leftWheelSpeed = -60;
     }
     
-    if (*rightWheelSpeed >= 50)
+    if (*rightWheelSpeed >= 60)
     {
-        *rightWheelSpeed = 50;
+        *rightWheelSpeed = 60;
     }
-    if (*rightWheelSpeed <= -50)
+    if (*rightWheelSpeed <= -60)
     {
-        *rightWheelSpeed = -50;
+        *rightWheelSpeed = -60;
     }
-    if(*speedCompensation > 10)
+    if(*speedCompensation > 30)
     {
-        *speedCompensation = 10;
+        *speedCompensation = 30;
+    }
+    if(*speedCompensation < -30)
+    {
+        *speedCompensation = -30;
     }
 }
 
@@ -336,11 +343,7 @@ void excerciseControl()
                 case 0:                         // Drive straight forward          
                     // <editor-fold defaultstate="collapsed" desc="drive forward">
                  
-                    if(leftWheelCount % 8 == 0)
-                    {
-                        leftWheelCount --;
-                    }
-
+                   
                     if(rightWheelMeasuredSpeed < 20)     // if speed < 10 mm/s increase speed of both wheels
                     {
                         rightWheelCommandedSpeed += SPEED_GAIN;
@@ -367,22 +370,36 @@ void excerciseControl()
                         speedCompensation += COMPENSATION_GAIN;
                         wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);     
                     }
+                    
                     if(rightWheelCount >= 115) // Stop after x counts and wait for button press to start next event
-                    {
-                        rightWheelCount = 0;
-                        leftWheelCount = 0;
-                        leftWheelCommandedSpeed = 0;
-                        rightWheelCommandedSpeed = 0;
-                        event += 1;
-                        speedCompensation = 0;
-                        wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
-                        wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
-                        for(int i = 0; i<20 ; i++)
+                    {   
+                        if(leftWheelCount >= 115)
                         {
-                            __delay_ms(50);
+                            rightWheelCount = 0;
+                            leftWheelCount = 0;
+                            leftWheelCommandedSpeed = 0;
+                            rightWheelCommandedSpeed = 0;
+                            event += 1;
+                            speedCompensation = 0;
+                            wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+                            wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+                            for(int i = 0; i<20 ; i++)
+                            {
+                                __delay_ms(50);
+                            }
+                            rightWheelCommandedSpeed = 25;
+                            leftWheelCommandedSpeed = -30;
                         }
-                        rightWheelCommandedSpeed = 30;
-                        leftWheelCommandedSpeed = -30;
+                        else
+                        {
+                            rightWheelCommandedSpeed = 0;
+                            leftWheelCommandedSpeed = 30;
+                            speedCompensation = 0;
+                            wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+                            wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+                        }
+                        
+                        
                     }
                     
                     limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
@@ -416,24 +433,34 @@ void excerciseControl()
                         wheelVelocity('l', leftWheelCommandedSpeed,speedCompensation);     
                     }
                     
-                    if(rightWheelCount >= 30)  // Stop after x counts and wait for button press to start next event
+                    if(rightWheelCount >= 19)  // Stop after x counts and wait for button press to start next event
                     {
-                        rightWheelCount = 0;
-                        leftWheelCount = 0;
-                        leftWheelCommandedSpeed = 0;
-                        rightWheelCommandedSpeed = 0;
-                        wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
-                        wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
-                        while(BUTTON == 1)
+                        if(leftWheelCount >= 19)
                         {
-                            continue;
+                            rightWheelCount = 0;
+                            leftWheelCount = 0;
+                            leftWheelCommandedSpeed = 0;
+                            rightWheelCommandedSpeed = 0;
+                            speedCompensation = 0;
+                            wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+                            wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+                            leftWheelCommandedSpeed = 35;
+                            rightWheelCommandedSpeed = 25;
+                            event++;
+                            for(int i = 0; i<20 ; i++)
+                            {
+                                __delay_ms(50);
+                            }
                         }
-                        for(int i = 0; i<20 ; i++)
+                        else
                         {
-                            __delay_ms(50);
+                            rightWheelCommandedSpeed = 0;
+                            leftWheelCommandedSpeed = -30;
+                            speedCompensation = 0;
+                            wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+                            wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation); 
                         }
                         
-                        event++;
                     }
                     limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
                     break;
@@ -442,25 +469,29 @@ void excerciseControl()
                 case 2:                         // Drive in a circle
                     // <editor-fold defaultstate="collapsed" desc="driving in circles">
             
+                    if(leftWheelCount % CIRCLE_FACTOR == 0)
+                    {
+                        leftWheelCount += 1;
+                    }
 
-                    if(rightWheelMeasuredSpeed < 30)     // if speed < 30 mm/s increase speed of both wheels
+                    if(rightWheelMeasuredSpeed < 20)     // if speed < 20 mm/s increase speed of both wheels
                     {
                         wheelVelocity('r', ++rightWheelCommandedSpeed, speedCompensation);
                         wheelVelocity('l', ++leftWheelCommandedSpeed, speedCompensation);
                     }
-                    if((leftWheelCount * CIRCLE_FACTOR) > (rightWheelCount + HYSTERESIS) )    // Adjust left wheel speed to match right
-                                                                // with hysteresis
+                    if((leftWheelCount) > (rightWheelCount + HYSTERESIS) )    // Adjust left wheel speed to match right
+                                                                                                    // with hysteresis
                     {
-                        speedCompensation--;
+                        speedCompensation -= CIRCLE_DOWN_COMPENSATION_GAIN;
                         wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
                     }
-                    if(rightWheelCount > ((leftWheelCount + HYSTERESIS)*CIRCLE_FACTOR))    // Adjust left wheel speed to match right
-                                                                // with hysteresis
+                    if(rightWheelCount > (leftWheelCount + HYSTERESIS))    // Adjust left wheel speed to match right
+                                                                                                // with hysteresis
                     {
-                        speedCompensation++;
+                        speedCompensation += CIRCLE_COMPENSATION_GAIN;
                         wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);     
                     }
-                    if(rightWheelCount >= 500)  // Stop after x counts and wait for button press to start next event
+                    if(rightWheelCount >= 1000)  // Stop after x counts and wait for button press to start next event
                     {
                         rightWheelCount = 0;
                         leftWheelCount = 0;
@@ -468,10 +499,6 @@ void excerciseControl()
                         rightWheelCommandedSpeed = 0;
                         wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
                         wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
-                        while(BUTTON == 1)
-                        {
-                            continue;
-                        }
                         event++;
                     }
                     limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
