@@ -9428,17 +9428,17 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 103 "main.c"
+# 115 "main.c"
 unsigned long elapsedMillis = 0;
 unsigned long leftWheelCount = 0;
 unsigned long rightWheelCount = 0;
 int rightWheelMeasuredSpeed = 0;
 int leftWheelMeasuredSpeed = 0;
-unsigned int leftWheelCommandedPW = 688;
-unsigned int rightWheelCommandedPW = 675;
+unsigned int leftWheelCommandedPW = 735;
+unsigned int rightWheelCommandedPW = 720;
 
 void wheelVelocity(char wheel, int speed, int speedCompensation);
-void limitWheelSpeeds(int* leftWheelMeasuredSpeed, int* rightWheelMeasuredSpeed);
+void limitWheelSpeeds(int* leftWheelMeasuredSpeed, int* rightWheelMeasuredSpeed, int* speedCompensation);
 void configureComparators();
 void configureTimers();
 void excerciseControl();
@@ -9452,7 +9452,7 @@ unsigned char event = 0;
 
 void main(void) {
 
-OSCCONbits.IRCF = 0b100;
+OSCCONbits.IRCF = 0b110;
 
 
 configureComparators();
@@ -9481,35 +9481,41 @@ while(1)
 
 
 
-if(lcdLastMillis + 5000 < elapsedMillis)
+if(lcdLastMillis + 250 < elapsedMillis)
 {
 LCDclear();
 printf("Speed: %d", rightWheelMeasuredSpeed);
 lcdLastMillis = elapsedMillis;
+LCDgotoLineTwo();
+printf("LW: %d ", leftWheelCount);
+printf(" RW: %d", rightWheelCount);
 }
 
 
 
-
+if(controlLastMillis + 300 < elapsedMillis)
 {
 controlLastMillis = elapsedMillis;
-
+excerciseControl();
 }
 
 
-if(speedLastMillis + 1000 < elapsedMillis)
+if(speedLastMillis + 500 < elapsedMillis)
 {
 
 
-rightWheelMeasuredSpeed = (int) ((rightWheelCount - rightCountTracker) * 1350 / (elapsedMillis - speedLastMillis));
 
-leftWheelMeasuredSpeed = (int) ((leftWheelCount - leftCountTracker) * 1350 / (elapsedMillis - speedLastMillis));
+
+rightWheelMeasuredSpeed = (int) ((rightWheelCount - rightCountTracker) * (2.4 * 500 ) / (elapsedMillis - speedLastMillis));
+
+leftWheelMeasuredSpeed = (int) ((leftWheelCount - leftCountTracker) * (2.4 * 500) / (elapsedMillis - speedLastMillis));
 
 speedLastMillis = elapsedMillis;
 
 rightCountTracker = rightWheelCount;
 
 leftCountTracker = leftWheelCount;
+
 }
 
 
@@ -9518,27 +9524,31 @@ leftCountTracker = leftWheelCount;
 return;
 }
 
-void limitWheelSpeeds(int* leftWheelMeasuredSpeed, int* rightWheelMeasuredSpeed)
+void limitWheelSpeeds(int* leftWheelSpeed, int* rightWheelSpeed, int* speedCompensation)
 {
 
 
 
-if (*leftWheelMeasuredSpeed >= 100)
+if (*leftWheelSpeed >= 50)
 {
-*leftWheelMeasuredSpeed = 100;
+*leftWheelSpeed = 50;
 }
-if (*leftWheelMeasuredSpeed <= -100)
+if (*leftWheelSpeed <= -50)
 {
-*leftWheelMeasuredSpeed = -100;
+*leftWheelSpeed = -50;
 }
 
-if (*rightWheelMeasuredSpeed >= 80)
+if (*rightWheelSpeed >= 50)
 {
-*rightWheelMeasuredSpeed = 80;
+*rightWheelSpeed = 50;
 }
-if (*rightWheelMeasuredSpeed <= -80)
+if (*rightWheelSpeed <= -50)
 {
-*rightWheelMeasuredSpeed = -80;
+*rightWheelSpeed = -50;
+}
+if(*speedCompensation > 10)
+{
+*speedCompensation = 10;
 }
 }
 
@@ -9548,14 +9558,14 @@ if(wheel == 'r')
 {
 
 
-rightWheelCommandedPW = (int) (675 + speed);
+rightWheelCommandedPW = (int) (720 + speed * 1);
 }
 
 if(wheel == 'l')
 {
 
 
-leftWheelCommandedPW = (int) (688 - (speedCompensation + speed));
+leftWheelCommandedPW = (int) (735 - (speedCompensation + speed * 1));
 }
 }
 
@@ -9565,7 +9575,6 @@ void interrupt ISR()
 
 if (CCP2IE && CCP2IF)
 {
-CCP2IE = 0;
 
 if(LATDbits.LATD1 == 1)
 {
@@ -9579,15 +9588,13 @@ CCPR2 = leftWheelCommandedPW;
 }
 TMR5 = 0;
 CCP2IF = 0;
-CCP2IE = 1;
-
+return;
 }
 
 
 
 if (CCP3IE && CCP3IF)
 {
-CCP3IE = 0;
 
 if(LATDbits.LATD0 == 1)
 {
@@ -9599,16 +9606,27 @@ else
 LATDbits.LATD0 = 1;
 CCPR3 = rightWheelCommandedPW;
 }
-TMR1 = 0;
 CCP3IF = 0;
-CCP3IE = 1;
+TMR1 = 0;
+
+return;
+
 
 }
 
-# 287
+
+
+
+if(C1IF && C1IE)
+{
+leftWheelCount++;
+char dummy = CM1CON0;
+C1IF = 0;
+}
 if(C2IF && C2IE)
 {
 rightWheelCount++;
+
 char dummy = CM2CON0;
 C2IF = 0;
 }
@@ -9620,6 +9638,7 @@ if (TMR2IE && TMR2IF)
 {
 elapsedMillis++;
 PIR1bits.TMR2IF = 0;
+return;
 }
 
 }
@@ -9627,45 +9646,63 @@ PIR1bits.TMR2IF = 0;
 
 void excerciseControl()
 {
+static int leftWheelCommandedSpeed = 35;
+static int rightWheelCommandedSpeed = 25;
+
 switch(event){
 case 0:
 
 
-if(rightWheelMeasuredSpeed < 10)
+if(leftWheelCount % 8 == 0)
 {
-wheelVelocity('r', ++rightWheelMeasuredSpeed, speedCompensation);
-wheelVelocity('l', ++leftWheelMeasuredSpeed, speedCompensation);
+leftWheelCount --;
 }
-if(rightWheelMeasuredSpeed > 55)
+
+if(rightWheelMeasuredSpeed < 20)
 {
-wheelVelocity('r', --rightWheelMeasuredSpeed, speedCompensation);
-wheelVelocity('l', --leftWheelMeasuredSpeed, speedCompensation);
+rightWheelCommandedSpeed += 2;
+leftWheelCommandedSpeed += 2;
+wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
 }
-if(leftWheelCount > rightWheelCount + 2)
+if(rightWheelMeasuredSpeed > 70)
+{
+rightWheelCommandedSpeed -= 2;
+leftWheelCommandedSpeed -= 2;
+wheelVelocity('r', --rightWheelCommandedSpeed, speedCompensation);
+wheelVelocity('l', --leftWheelCommandedSpeed, speedCompensation);
+}
+if(leftWheelCount > rightWheelCount + 1)
 
 {
-speedCompensation--;
-wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
+speedCompensation -= (leftWheelCount - rightWheelCount)/2;
+wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
 }
-if(rightWheelCount > leftWheelCount + 2)
+if(rightWheelCount > (leftWheelCount + 1) )
 
 {
-speedCompensation++;
-wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
+speedCompensation += (rightWheelCount - leftWheelCount)/2;
+wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
 }
-if(rightWheelCount >= 113)
+if(rightWheelCount >= 115)
 {
 rightWheelCount = 0;
 leftWheelCount = 0;
-wheelVelocity('r', 0, speedCompensation);
-wheelVelocity('l', 0, speedCompensation);
-while(PORTBbits.RB0 == 1)
+leftWheelCommandedSpeed = 0;
+rightWheelCommandedSpeed = 0;
+event += 1;
+speedCompensation = 0;
+wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+for(int i = 0; i<20 ; i++)
 {
-continue;
+_delay((unsigned long)((50)*(8000000/4000.0)));
 }
-event++;
+rightWheelCommandedSpeed = 30;
+leftWheelCommandedSpeed = -30;
 }
-limitWheelSpeeds(&leftWheelMeasuredSpeed, &rightWheelMeasuredSpeed);
+
+limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
 break;
 
 
@@ -9673,42 +9710,49 @@ case 1:
 
 
 
-if(rightWheelMeasuredSpeed < 10)
+if(rightWheelMeasuredSpeed < 15)
 {
-wheelVelocity('r', ++rightWheelMeasuredSpeed, speedCompensation);
-wheelVelocity('l', --leftWheelMeasuredSpeed, speedCompensation);
+wheelVelocity('r', ++rightWheelCommandedSpeed, speedCompensation);
+wheelVelocity('l', --leftWheelCommandedSpeed, speedCompensation);
 }
-if(rightWheelMeasuredSpeed > 12)
+if(rightWheelMeasuredSpeed > 30)
 {
-wheelVelocity('r', --rightWheelMeasuredSpeed, speedCompensation);
-wheelVelocity('l', ++leftWheelMeasuredSpeed, speedCompensation);
+wheelVelocity('r', --rightWheelCommandedSpeed, speedCompensation);
+wheelVelocity('l', ++leftWheelCommandedSpeed, speedCompensation);
 }
-if(leftWheelCount > (rightWheelCount + 2))
+if(leftWheelCount > (rightWheelCount + 1))
 
 {
-speedCompensation++;
-wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
+speedCompensation -= ((leftWheelCount - rightWheelCount)/2);
+wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
 }
-if(rightWheelCount > leftWheelCount + 2)
+if(rightWheelCount > leftWheelCount + 1)
 
 {
-speedCompensation--;
-wheelVelocity('l', leftWheelMeasuredSpeed,speedCompensation);
+speedCompensation += (rightWheelCount - leftWheelCount)/2;
+wheelVelocity('l', leftWheelCommandedSpeed,speedCompensation);
 }
 
-if(rightWheelCount >= 25)
+if(rightWheelCount >= 30)
 {
 rightWheelCount = 0;
 leftWheelCount = 0;
-wheelVelocity('r', 0, speedCompensation);
-wheelVelocity('l', 0, speedCompensation);
+leftWheelCommandedSpeed = 0;
+rightWheelCommandedSpeed = 0;
+wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
 while(PORTBbits.RB0 == 1)
 {
 continue;
 }
+for(int i = 0; i<20 ; i++)
+{
+_delay((unsigned long)((50)*(8000000/4000.0)));
+}
+
 event++;
 }
-limitWheelSpeeds(&leftWheelMeasuredSpeed, &rightWheelMeasuredSpeed);
+limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
 break;
 
 
@@ -9718,34 +9762,36 @@ case 2:
 
 if(rightWheelMeasuredSpeed < 30)
 {
-wheelVelocity('r', ++rightWheelMeasuredSpeed, speedCompensation);
-wheelVelocity('l', ++leftWheelMeasuredSpeed, speedCompensation);
+wheelVelocity('r', ++rightWheelCommandedSpeed, speedCompensation);
+wheelVelocity('l', ++leftWheelCommandedSpeed, speedCompensation);
 }
-if((leftWheelCount * 1.25f) > (rightWheelCount + 2) )
+if((leftWheelCount * 1.25f) > (rightWheelCount + 1) )
 
 {
 speedCompensation--;
-wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
+wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
 }
-if(rightWheelCount > ((leftWheelCount + 2)*1.25f))
+if(rightWheelCount > ((leftWheelCount + 1)*1.25f))
 
 {
 speedCompensation++;
-wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
+wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
 }
 if(rightWheelCount >= 500)
 {
 rightWheelCount = 0;
 leftWheelCount = 0;
-wheelVelocity('r', 0, speedCompensation);
-wheelVelocity('l', 0, speedCompensation);
+leftWheelCommandedSpeed = 0;
+rightWheelCommandedSpeed = 0;
+wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
 while(PORTBbits.RB0 == 1)
 {
 continue;
 }
 event++;
 }
-limitWheelSpeeds(&leftWheelMeasuredSpeed, &rightWheelMeasuredSpeed);
+limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
 break;
 
 
@@ -9758,8 +9804,10 @@ void configureTimers()
 
 T1CON = 0;
 T1CONbits.TMR1CS = 0b00;
+T1CONbits.T1CKPS = 0b10;
 T5CON = 0;
 T5CONbits.TMR5CS = 0b00;
+T5CONbits.T5CKPS = 0b10;
 
 
 
@@ -9769,29 +9817,27 @@ CCP2CON = 0;
 CCP3CONbits.CCP3M = 0b1010;
 CCP2CONbits.CCP2M = 0b1010;
 
-CCP3IE = 1;
-CCP2IE = 1;
-
-
-
-
+# 508
 CCPTMRS0bits.C3TSEL = 0;
-CCPTMRS0bits.C2TSEL = 2;
+CCPTMRS0bits.C2TSEL = 0b10;
 
 CCPR3 = 675;
 CCPR2 = 675;
 
+CCP3IE = 1;
+CCP2IE = 1;
 
 
 PIE1bits.TMR2IE = 1;
 T2CON = 0;
-T2CONbits.T2CKPS = 0b01;
+T2CONbits.T2CKPS = 0b10;
 T2CONbits.TMR2ON = 1;
 PR2 = 125;
 
-# 474
+# 528
 INTCONbits.GIE = 1;
 INTCONbits.PEIE = 1;
+
 TMR1 = 0;
 TMR5 = 0;
 TMR1ON = 1;
@@ -9815,7 +9861,7 @@ VREFCON0bits.FVRS=0b01;
 
 TRISBbits.TRISB1 = 1;
 ANSELBbits.ANSB1 = 1;
-WPUBbits.WPUB1 = 1;
+
 
 
 CM2CON0bits.C2ON = 1;
@@ -9830,10 +9876,28 @@ CM2CON1bits.C2RSEL = 1;
 CM2CON1bits.C2HYS = 0;
 CM2CON1bits.C2SYNC = 0;
 
+# 573
+TRISBbits.TRISB3 = 1;
+ANSELBbits.ANSB3 = 1;
 
+
+CM1CON0bits.C1ON = 1;
+CM1CON0bits.C1OUT = 0;
+CM1CON0bits.C1OE = 0;
+CM1CON0bits.C1POL = 1;
+CM1CON0bits.C1SP = 1;
+CM1CON0bits.C1R = 1;
+CM1CON0bits.C1CH = 0b10;
+
+CM2CON1bits.C1RSEL = 1;
+CM2CON1bits.C1HYS = 0;
+CM2CON1bits.C1SYNC = 0;
+
+
+PIR2bits.C1IF = 0;
 PIR2bits.C2IF = 0;
 PIE2bits.C2IE = 1;
-PIE2bits.C1IE = 0;
+PIE2bits.C1IE = 1;
 
-# 527
+
 }

@@ -80,15 +80,17 @@
 
 
 #define CIRCLE_FACTOR 1.25f
-#define HYSTERESIS 2
+#define HYSTERESIS 1
 
 #define BUTTON PORTBbits.RB0    // B0 is pin interrupt INT0
 
-#define LEFT_WHEEL_NEUTRAL 688
-#define RIGHT_WHEEL_NEUTRAL 675
+#define LEFT_WHEEL_NEUTRAL 735
+#define RIGHT_WHEEL_NEUTRAL 720
 
-#define RIGHT_SPEED_COUNT_RATIO 5400
-#define LEFT_SPEED_COUNT_RATIO  5400
+#define RIGHT_SPEED_COUNT_RATIO 2.4
+#define LEFT_SPEED_COUNT_RATIO  2.4
+
+#define TOP_SPEED_FACTOR 1
 
 #define RADIUS 55                       //radius in millimeters
 #define HOLES 32                        //number of holes in each wheel
@@ -96,9 +98,15 @@
 #define PWM1 LATDbits.LATD0
 #define PWM2 LATDbits.LATD1 
 
-#define CONTROL_MS 100
+#define CONTROL_MS 300
 #define VELOCITY_CALC_MS 500
 #define LCD_UPDATE_MS 1000
+
+#define SPEED_GAIN 2
+#define COMPENSATION_GAIN (rightWheelCount - leftWheelCount)/2
+#define DOWN_COMPENSATION_GAIN (leftWheelCount - rightWheelCount)/2
+
+#define _XTAL_FREQ 8000000
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="Global Declarations">
@@ -109,11 +117,11 @@ unsigned long leftWheelCount = 0;       // Left wheel encoder count
 unsigned long rightWheelCount = 0;      // Right wheel encoder count
 int rightWheelMeasuredSpeed = 0;        // Right wheel measured speed in mm/s
 int leftWheelMeasuredSpeed = 0;         // Right wheel measured speed in mm/s
-unsigned int leftWheelCommandedPW = 688;
-unsigned int rightWheelCommandedPW = 675;
+unsigned int leftWheelCommandedPW = LEFT_WHEEL_NEUTRAL;
+unsigned int rightWheelCommandedPW = RIGHT_WHEEL_NEUTRAL;
 
 void wheelVelocity(char wheel, int speed, int speedCompensation);
-void limitWheelSpeeds(int* leftWheelMeasuredSpeed, int* rightWheelMeasuredSpeed);
+void limitWheelSpeeds(int* leftWheelMeasuredSpeed, int* rightWheelMeasuredSpeed, int* speedCompensation);
 void configureComparators();
 void configureTimers();
 void excerciseControl();
@@ -156,11 +164,14 @@ void main(void) {
         
  
         // LCD Update
-        if(lcdLastMillis + 5000 < elapsedMillis)
+        if(lcdLastMillis + 250 < elapsedMillis)
         {
             LCDclear();
             printf("Speed: %d", rightWheelMeasuredSpeed);
             lcdLastMillis = elapsedMillis;
+            LCDgotoLineTwo();
+            printf("LW: %d ",  leftWheelCount);
+            printf(" RW: %d", rightWheelCount);
         }
         
 
@@ -168,7 +179,7 @@ void main(void) {
         if(controlLastMillis + CONTROL_MS < elapsedMillis) // Trigger every (CONTROL_FREQUENCY)ms
         {
             controlLastMillis = elapsedMillis;
-            //excerciseControl();
+            excerciseControl();
         }
         
         // Speed calculator
@@ -178,9 +189,9 @@ void main(void) {
 
             //5.3996 is the millimeters per count for the wheel
             //tracks the instantaneous right wheel speed
-            rightWheelMeasuredSpeed = (int) ((rightWheelCount - rightCountTracker) * (RIGHT_SPEED_COUNT_RATIO / VELOCITY_CALC_MS) / (elapsedMillis - speedLastMillis)); 
+            rightWheelMeasuredSpeed = (int) ((rightWheelCount - rightCountTracker) * (RIGHT_SPEED_COUNT_RATIO * VELOCITY_CALC_MS ) / (elapsedMillis - speedLastMillis)); 
             //tracks the instantaneous left wheel speed
-            leftWheelMeasuredSpeed = (int) ((leftWheelCount - leftCountTracker) * (LEFT_SPEED_COUNT_RATIO / VELOCITY_CALC_MS) (elapsedMillis - speedLastMillis));   
+            leftWheelMeasuredSpeed = (int) ((leftWheelCount - leftCountTracker) * (LEFT_SPEED_COUNT_RATIO * VELOCITY_CALC_MS) / (elapsedMillis - speedLastMillis));   
             //sets the speedElapsedMillis the same as the current time tick
             speedLastMillis = elapsedMillis;
             //sets the right count tracker the same as right wheel count
@@ -196,27 +207,31 @@ void main(void) {
     return;
 }
 
-void limitWheelSpeeds(int* leftWheelMeasuredSpeed, int* rightWheelMeasuredSpeed)
+void limitWheelSpeeds(int* leftWheelSpeed, int* rightWheelSpeed, int* speedCompensation)
 {
     // Limit wheel speeds to +- 80 for right wheel and +- 100 for left wheel
     // This allows left wheel to always be able to go faster or slower than the right 
     // wheel for closed loop control
-    if (*leftWheelMeasuredSpeed >= 100)       
+    if (*leftWheelSpeed >= 50)       
     {
-        *leftWheelMeasuredSpeed = 100;
+        *leftWheelSpeed = 50;
     }
-    if (*leftWheelMeasuredSpeed <= -100)
+    if (*leftWheelSpeed <= -50)
     {
-        *leftWheelMeasuredSpeed = -100;
+        *leftWheelSpeed = -50;
     }
     
-    if (*rightWheelMeasuredSpeed >= 80)
+    if (*rightWheelSpeed >= 50)
     {
-        *rightWheelMeasuredSpeed = 80;
+        *rightWheelSpeed = 50;
     }
-    if (*rightWheelMeasuredSpeed <= -80)
+    if (*rightWheelSpeed <= -50)
     {
-        *rightWheelMeasuredSpeed = -80;
+        *rightWheelSpeed = -50;
+    }
+    if(*speedCompensation > 10)
+    {
+        *speedCompensation = 10;
     }
 }
 
@@ -226,14 +241,14 @@ void wheelVelocity(char wheel, int speed, int speedCompensation)
     {
         // if speed is 100, temp will be 1000 (1.75ms - forward) , if speed is -100, temp is 625 (1.25ms - reverse)
         // if speed is 0, speed will be 750 1.5ms (neutral)
-        rightWheelCommandedPW = (int) (RIGHT_WHEEL_NEUTRAL + speed);
+        rightWheelCommandedPW = (int) (RIGHT_WHEEL_NEUTRAL + speed * TOP_SPEED_FACTOR);
     }
     
     if(wheel == 'l')
     {
         // if speed is 100, temp will be 875 (1.75ms - forward) , if speed is -100, temp is 625 (1.25ms - reverse)
         // if speed is 0, speed will be 750 1.5ms (neutral)
-        leftWheelCommandedPW = (int) (LEFT_WHEEL_NEUTRAL - (speedCompensation + speed));  
+        leftWheelCommandedPW = (int) (LEFT_WHEEL_NEUTRAL - (speedCompensation + speed * TOP_SPEED_FACTOR));  
     }
 }
 
@@ -285,14 +300,16 @@ void interrupt ISR()
     
     // <editor-fold defaultstate="collapsed" desc="Comparator Interrupts">
         
-    /*if(C1IF)                //check to see if the first interrupt flag was set
+    if(C1IF && C1IE)                //check to see if the first interrupt flag was set
     {
         leftWheelCount++;   //if the comparator 1 interrupt flag is set, left wheel count is increased by 1
+        char dummy = CM1CON0;       // Has to be read to clear latch
         C1IF = 0;           //reset the interrupt flag
-    }*/
+    }
     if(C2IF && C2IE)                //check to see if the second interrupt flag was set
     {
         rightWheelCount++;          //if the comparator 2 interrupt flag is set, right wheel count is increased by 1
+        
         char dummy = CM2CON0;       // Has to be read to clear latch
         C2IF = 0;                   //reset the interrupt flag
     }
@@ -312,45 +329,63 @@ void interrupt ISR()
 
 void excerciseControl()
 {
+    static int leftWheelCommandedSpeed = 35;        // Commanded Speed for left wheel
+    static int rightWheelCommandedSpeed = 25;       // Commanded Speed for right wheel
+    
     switch(event){
                 case 0:                         // Drive straight forward          
                     // <editor-fold defaultstate="collapsed" desc="drive forward">
+                 
+                    if(leftWheelCount % 8 == 0)
+                    {
+                        leftWheelCount --;
+                    }
 
-                    if(rightWheelMeasuredSpeed < 10)     // if speed < 10 mm/s increase speed of both wheels
+                    if(rightWheelMeasuredSpeed < 20)     // if speed < 10 mm/s increase speed of both wheels
                     {
-                        wheelVelocity('r', ++rightWheelMeasuredSpeed, speedCompensation);
-                        wheelVelocity('l', ++leftWheelMeasuredSpeed, speedCompensation);
+                        rightWheelCommandedSpeed += SPEED_GAIN;
+                        leftWheelCommandedSpeed += SPEED_GAIN;
+                        wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+                        wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
                     }
-                    if(rightWheelMeasuredSpeed > 55)     // if speed > 55 mm/s decrease speed of both wheels
+                    if(rightWheelMeasuredSpeed > 70)     // if speed > 55 mm/s decrease speed of both wheels
                     {
-                        wheelVelocity('r', --rightWheelMeasuredSpeed, speedCompensation);
-                        wheelVelocity('l', --leftWheelMeasuredSpeed, speedCompensation);
+                        rightWheelCommandedSpeed -= SPEED_GAIN;
+                        leftWheelCommandedSpeed -= SPEED_GAIN;
+                        wheelVelocity('r', --rightWheelCommandedSpeed, speedCompensation);
+                        wheelVelocity('l', --leftWheelCommandedSpeed, speedCompensation);
                     }
-                    if(leftWheelCount > rightWheelCount + HYSTERESIS)    // Adjust left wheel speed to match right
+                    if(leftWheelCount  > rightWheelCount + HYSTERESIS)    // Adjust left wheel speed to match right
                                                                 // with hysteresis
                     {
-                        speedCompensation--;
-                        wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
+                        speedCompensation -= DOWN_COMPENSATION_GAIN;
+                        wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
                     }
-                    if(rightWheelCount > leftWheelCount + HYSTERESIS)    // Adjust left wheel speed to match right
+                    if(rightWheelCount  > (leftWheelCount + HYSTERESIS) )    // Adjust left wheel speed to match right
                                                                 // with hysteresis
                     {
-                        speedCompensation++;
-                        wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);     
+                        speedCompensation += COMPENSATION_GAIN;
+                        wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);     
                     }
-                    if(rightWheelCount >= 113) // Stop after x counts and wait for button press to start next event
+                    if(rightWheelCount >= 115) // Stop after x counts and wait for button press to start next event
                     {
                         rightWheelCount = 0;
                         leftWheelCount = 0;
-                        wheelVelocity('r', 0, speedCompensation);
-                        wheelVelocity('l', 0, speedCompensation);
-                        while(BUTTON == 1)
+                        leftWheelCommandedSpeed = 0;
+                        rightWheelCommandedSpeed = 0;
+                        event += 1;
+                        speedCompensation = 0;
+                        wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+                        wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+                        for(int i = 0; i<20 ; i++)
                         {
-                            continue;
+                            __delay_ms(50);
                         }
-                        event++;
+                        rightWheelCommandedSpeed = 30;
+                        leftWheelCommandedSpeed = -30;
                     }
-                    limitWheelSpeeds(&leftWheelMeasuredSpeed, &rightWheelMeasuredSpeed);
+                    
+                    limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
                     break;
                     // </editor-fold>
                     
@@ -358,42 +393,49 @@ void excerciseControl()
                     // <editor-fold defaultstate="collapsed" desc="stationary circle">
             
 
-                    if(rightWheelMeasuredSpeed < 10)     // if speed < 10 mm/s increase speed of both wheels (opposite directions)
+                    if(rightWheelMeasuredSpeed < 15)     // if speed < 10 mm/s increase speed of both wheels (opposite directions)
                     {
-                        wheelVelocity('r', ++rightWheelMeasuredSpeed, speedCompensation);
-                        wheelVelocity('l', --leftWheelMeasuredSpeed, speedCompensation);
+                        wheelVelocity('r', ++rightWheelCommandedSpeed, speedCompensation);
+                        wheelVelocity('l', --leftWheelCommandedSpeed, speedCompensation);
                     }
-                    if(rightWheelMeasuredSpeed > 12)     // if speed > 12 mm/s decrease speed of both wheels
+                    if(rightWheelMeasuredSpeed > 30)     // if speed > 12 mm/s decrease speed of both wheels
                     {
-                        wheelVelocity('r', --rightWheelMeasuredSpeed, speedCompensation);
-                        wheelVelocity('l', ++leftWheelMeasuredSpeed, speedCompensation);
+                        wheelVelocity('r', --rightWheelCommandedSpeed, speedCompensation);
+                        wheelVelocity('l', ++leftWheelCommandedSpeed, speedCompensation);
                     }
                     if(leftWheelCount > (rightWheelCount + HYSTERESIS))    // Adjust left wheel speed to match right
                                                                 // with hysteresis
                     {
-                        speedCompensation++;
-                        wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
+                        speedCompensation -= (DOWN_COMPENSATION_GAIN);
+                        wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
                     }
                     if(rightWheelCount > leftWheelCount + HYSTERESIS)    // Adjust left wheel speed to match right
                                                                 // with hysteresis
                     {
-                        speedCompensation--;
-                        wheelVelocity('l', leftWheelMeasuredSpeed,speedCompensation);     
+                        speedCompensation += COMPENSATION_GAIN;
+                        wheelVelocity('l', leftWheelCommandedSpeed,speedCompensation);     
                     }
                     
-                    if(rightWheelCount >= 25)  // Stop after x counts and wait for button press to start next event
+                    if(rightWheelCount >= 30)  // Stop after x counts and wait for button press to start next event
                     {
                         rightWheelCount = 0;
                         leftWheelCount = 0;
-                        wheelVelocity('r', 0, speedCompensation);
-                        wheelVelocity('l', 0, speedCompensation);
+                        leftWheelCommandedSpeed = 0;
+                        rightWheelCommandedSpeed = 0;
+                        wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+                        wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
                         while(BUTTON == 1)
                         {
                             continue;
                         }
+                        for(int i = 0; i<20 ; i++)
+                        {
+                            __delay_ms(50);
+                        }
+                        
                         event++;
                     }
-                    limitWheelSpeeds(&leftWheelMeasuredSpeed, &rightWheelMeasuredSpeed);
+                    limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
                     break;
                     // </editor-fold>
                     
@@ -403,34 +445,36 @@ void excerciseControl()
 
                     if(rightWheelMeasuredSpeed < 30)     // if speed < 30 mm/s increase speed of both wheels
                     {
-                        wheelVelocity('r', ++rightWheelMeasuredSpeed, speedCompensation);
-                        wheelVelocity('l', ++leftWheelMeasuredSpeed, speedCompensation);
+                        wheelVelocity('r', ++rightWheelCommandedSpeed, speedCompensation);
+                        wheelVelocity('l', ++leftWheelCommandedSpeed, speedCompensation);
                     }
                     if((leftWheelCount * CIRCLE_FACTOR) > (rightWheelCount + HYSTERESIS) )    // Adjust left wheel speed to match right
                                                                 // with hysteresis
                     {
                         speedCompensation--;
-                        wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
+                        wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
                     }
                     if(rightWheelCount > ((leftWheelCount + HYSTERESIS)*CIRCLE_FACTOR))    // Adjust left wheel speed to match right
                                                                 // with hysteresis
                     {
                         speedCompensation++;
-                        wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);     
+                        wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);     
                     }
                     if(rightWheelCount >= 500)  // Stop after x counts and wait for button press to start next event
                     {
                         rightWheelCount = 0;
                         leftWheelCount = 0;
-                        wheelVelocity('r', 0, speedCompensation);
-                        wheelVelocity('l', 0, speedCompensation);
+                        leftWheelCommandedSpeed = 0;
+                        rightWheelCommandedSpeed = 0;
+                        wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+                        wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
                         while(BUTTON == 1)
                         {
                             continue;
                         }
                         event++;
                     }
-                    limitWheelSpeeds(&leftWheelMeasuredSpeed, &rightWheelMeasuredSpeed);
+                    limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
                     break;
                     // </editor-fold>
                     
@@ -446,7 +490,7 @@ void configureTimers()
     T1CONbits.T1CKPS = 0b10;
     T5CON = 0;
     T5CONbits.TMR5CS = 0b00;  // Timer 5 clock is instruction clock (Fosc/4)
-    T1CONbits.T1CKPS = 0b10;
+    T5CONbits.T5CKPS = 0b10;
 
 
 
@@ -507,9 +551,9 @@ void configureComparators()
     
     TRISBbits.TRISB1 = 1;
     ANSELBbits.ANSB1 = 1;
-    WPUBbits.WPUB1 = 1;
     
-    // Comparator 2 (Kyle)
+    
+    // Comparator 2 (James)
     CM2CON0bits.C2ON = 1;           /*C2 is enabled*/
     CM2CON0bits.C2OUT = 0;          /*When C2Vin+ > C2Vin-*/
     CM2CON0bits.C2OE = 0;           /*The output is internal only*/
@@ -519,20 +563,34 @@ void configureComparators()
     CM2CON0bits.C2CH = 0b11;        /*selecting the pin C12IN3-*/
     
     CM2CON1bits.C2RSEL = 1;         /*FVR BUF1 routed to C2Vref*/
-    CM2CON1bits.C2HYS  = 0;         /*hysteresis disabled*/
+    CM2CON1bits.C2HYS  = 0;         /*hysteresis enabled*/
     CM2CON1bits.C2SYNC = 0;         /* C2 is asynchronous*/
     
     
+    
+
+    
+    TRISBbits.TRISB3 = 1;
+    ANSELBbits.ANSB3 = 1;
+    
+    // Comparator 1 (Kyle)
+    CM1CON0bits.C1ON = 1;           /*C2 is enabled*/
+    CM1CON0bits.C1OUT = 0;          /*When C2Vin+ > C2Vin-*/
+    CM1CON0bits.C1OE = 0;           /*The output is internal only*/
+    CM1CON0bits.C1POL = 1;          /*logic is inverted*/
+    CM1CON0bits.C1SP = 1;           /*determines speed high*/
+    CM1CON0bits.C1R = 1;            /*C2Vin+ is connected to Vref */
+    CM1CON0bits.C1CH = 0b10;        /*selecting the pin C12IN3-*/
+    
+    CM2CON1bits.C1RSEL = 1;         /*FVR BUF1 routed to C2Vref*/
+    CM2CON1bits.C1HYS  = 0;         /*hysteresis enabled*/
+    CM2CON1bits.C1SYNC = 0;         /* C2 is asynchronous*/
+    
+    
+    PIR2bits.C1IF = 0;
     PIR2bits.C2IF = 0;
     PIE2bits.C2IE = 1;
-    PIE2bits.C1IE = 0;
-    
-    // TODO
-    // ADD Comparator interrupt setup code
-    // ie setup relevant PIEx registers (will not use all of them)
-    
-    
-    //TODO
-    // ADD Comparator 1 code (James)
+    PIE2bits.C1IE = 1;
+  
     
 }

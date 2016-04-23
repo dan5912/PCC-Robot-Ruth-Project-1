@@ -11,9 +11,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1032 . . . ]
 "16652
 [v _OSCCONbits `VS1032 ~T0 @X0 0 e@4051 ]
-"113 main.c
+"122 main.c
 [v _configureComparators `(v ~T0 @X0 0 ef ]
-"114
+"123
 [v _configureTimers `(v ~T0 @X0 0 ef ]
 "8485 /Applications/microchip/xc8/v1.36/include/pic18f46k22.h
 [s S508 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -40,6 +40,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "24 lcd.h
 [v _LCDclear `(v ~T0 @X0 0 ef ]
+"26
+[v _LCDgotoLineTwo `(v ~T0 @X0 0 ef ]
+"124 main.c
+[v _excerciseControl `(v ~T0 @X0 0 ef ]
 "18332 /Applications/microchip/xc8/v1.36/include/pic18f46k22.h
 [v _CCP2IE `Vb ~T0 @X0 0 e@32000 ]
 "18334
@@ -88,6 +92,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _CCPR3 `Vus ~T0 @X0 0 e@3934 ]
 "16370
 [v _TMR1 `Vus ~T0 @X0 0 e@4046 ]
+"18208
+[v _C1IF `Vb ~T0 @X0 0 e@32014 ]
+"18206
+[v _C1IE `Vb ~T0 @X0 0 e@32006 ]
+"5738
+[v _CM1CON0 `Vuc ~T0 @X0 0 e@3961 ]
 "18240
 [v _C2IF `Vb ~T0 @X0 0 e@32013 ]
 "18238
@@ -284,14 +294,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S32 . . . ]
 "707
 [v _VREFCON0bits `VS32 ~T0 @X0 0 e@3906 ]
-"2694
-[s S138 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S138 . WPUB0 WPUB1 WPUB2 WPUB3 WPUB4 WPUB5 WPUB6 WPUB7 ]
-"2693
-[u S137 `S138 1 ]
-[n S137 . . ]
-"2705
-[v _WPUBbits `VS137 ~T0 @X0 0 e@3937 ]
 "5470
 [s S326 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S326 . C2CH C2R C2SP C2POL C2OE C2OUT C2ON ]
@@ -335,6 +337,65 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S321 . . ]
 "5360
 [v _CM2CON1bits `VS321 ~T0 @X0 0 e@3959 ]
+"5749
+[s S348 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S348 . C1CH C1R C1SP C1POL C1OE C1OUT C1ON ]
+"5758
+[s S349 :1 `uc 1 :1 `uc 1 ]
+[n S349 . C1CH0 C1CH1 ]
+"5762
+[s S350 :1 `uc 1 ]
+[n S350 . CCH0 ]
+"5765
+[s S351 :1 `uc 1 ]
+[n S351 . CCH01 ]
+"5768
+[s S352 :1 `uc 1 :1 `uc 1 ]
+[n S352 . . CCH1 ]
+"5772
+[s S353 :1 `uc 1 :1 `uc 1 ]
+[n S353 . . CCH11 ]
+"5776
+[s S354 :6 `uc 1 :1 `uc 1 ]
+[n S354 . . COE ]
+"5780
+[s S355 :6 `uc 1 :1 `uc 1 ]
+[n S355 . . COE1 ]
+"5784
+[s S356 :7 `uc 1 :1 `uc 1 ]
+[n S356 . . CON ]
+"5788
+[s S357 :7 `uc 1 :1 `uc 1 ]
+[n S357 . . CON1 ]
+"5792
+[s S358 :5 `uc 1 :1 `uc 1 ]
+[n S358 . . CPOL ]
+"5796
+[s S359 :5 `uc 1 :1 `uc 1 ]
+[n S359 . . CPOL1 ]
+"5800
+[s S360 :2 `uc 1 :1 `uc 1 ]
+[n S360 . . CREF ]
+"5804
+[s S361 :2 `uc 1 :1 `uc 1 ]
+[n S361 . . CREF1 ]
+"5808
+[s S362 :3 `uc 1 :1 `uc 1 ]
+[n S362 . . EVPOL0 ]
+"5812
+[s S363 :3 `uc 1 :1 `uc 1 ]
+[n S363 . . EVPOL01 ]
+"5816
+[s S364 :4 `uc 1 :1 `uc 1 ]
+[n S364 . . EVPOL1 ]
+"5820
+[s S365 :4 `uc 1 :1 `uc 1 ]
+[n S365 . . EVPOL11 ]
+"5748
+[u S347 `S348 1 `S349 1 `S350 1 `S351 1 `S352 1 `S353 1 `S354 1 `S355 1 `S356 1 `S357 1 `S358 1 `S359 1 `S360 1 `S361 1 `S362 1 `S363 1 `S364 1 `S365 1 ]
+[n S347 . . . . . . . . . . . . . . . . . . . ]
+"5825
+[v _CM1CON0bits `VS347 ~T0 @X0 0 e@3961 ]
 "9919
 [s S558 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S558 . CCP2IF TMR3IF HLVDIF BCL1IF EEIF C2IF C1IF OSCFIF ]
@@ -7872,982 +7933,1100 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-"103 main.c
+"112 main.c
 [v _elapsedMillis `ul ~T0 @X0 1 e ]
 [i _elapsedMillis
 -> -> -> 0 `i `l `ul
 ]
-[; ;main.c: 103: unsigned long elapsedMillis = 0;
-"104
+[; ;main.c: 112: unsigned long elapsedMillis = 0;
+"113
 [v _leftWheelCount `ul ~T0 @X0 1 e ]
 [i _leftWheelCount
 -> -> -> 0 `i `l `ul
 ]
-[; ;main.c: 104: unsigned long leftWheelCount = 0;
-"105
+[; ;main.c: 113: unsigned long leftWheelCount = 0;
+"114
 [v _rightWheelCount `ul ~T0 @X0 1 e ]
 [i _rightWheelCount
 -> -> -> 0 `i `l `ul
 ]
-[; ;main.c: 105: unsigned long rightWheelCount = 0;
-"106
+[; ;main.c: 114: unsigned long rightWheelCount = 0;
+"115
 [v _rightWheelMeasuredSpeed `i ~T0 @X0 1 e ]
 [i _rightWheelMeasuredSpeed
 -> 0 `i
 ]
-[; ;main.c: 106: int rightWheelMeasuredSpeed = 0;
-"107
+[; ;main.c: 115: int rightWheelMeasuredSpeed = 0;
+"116
 [v _leftWheelMeasuredSpeed `i ~T0 @X0 1 e ]
 [i _leftWheelMeasuredSpeed
 -> 0 `i
 ]
-[; ;main.c: 107: int leftWheelMeasuredSpeed = 0;
-"108
+[; ;main.c: 116: int leftWheelMeasuredSpeed = 0;
+"117
 [v _leftWheelCommandedPW `ui ~T0 @X0 1 e ]
 [i _leftWheelCommandedPW
--> -> 688 `i `ui
+-> -> 735 `i `ui
 ]
-[; ;main.c: 108: unsigned int leftWheelCommandedPW = 688;
-"109
+[; ;main.c: 117: unsigned int leftWheelCommandedPW = 735;
+"118
 [v _rightWheelCommandedPW `ui ~T0 @X0 1 e ]
 [i _rightWheelCommandedPW
--> -> 675 `i `ui
+-> -> 720 `i `ui
 ]
-[; ;main.c: 109: unsigned int rightWheelCommandedPW = 675;
-[; ;main.c: 111: void wheelVelocity(char wheel, int speed, int speedCompensation);
-[; ;main.c: 112: void limitWheelSpeeds(int* leftWheelMeasuredSpeed, int* rightWheelMeasuredSpeed);
-[; ;main.c: 113: void configureComparators();
-[; ;main.c: 114: void configureTimers();
-[; ;main.c: 115: void excerciseControl();
-"117
+[; ;main.c: 118: unsigned int rightWheelCommandedPW = 720;
+[; ;main.c: 120: void wheelVelocity(char wheel, int speed, int speedCompensation);
+[; ;main.c: 121: void limitWheelSpeeds(int* leftWheelMeasuredSpeed, int* rightWheelMeasuredSpeed, int* speedCompensation);
+[; ;main.c: 122: void configureComparators();
+[; ;main.c: 123: void configureTimers();
+[; ;main.c: 124: void excerciseControl();
+"126
 [v _speedCompensation `i ~T0 @X0 1 e ]
 [i _speedCompensation
 -> 0 `i
 ]
-[; ;main.c: 117: int speedCompensation = 0;
-"120
+[; ;main.c: 126: int speedCompensation = 0;
+"129
 [v _event `uc ~T0 @X0 1 e ]
 [i _event
 -> -> 0 `i `uc
 ]
-[; ;main.c: 120: unsigned char event = 0;
-"124
+[; ;main.c: 129: unsigned char event = 0;
+"133
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 124: void main(void) {
+[; ;main.c: 133: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 126: OSCCONbits.IRCF = 0b110;
-"126
+[; ;main.c: 135: OSCCONbits.IRCF = 0b110;
+"135
 [e = . . _OSCCONbits 0 3 -> -> 6 `i `uc ]
-[; ;main.c: 129: configureComparators();
-"129
-[e ( _configureComparators ..  ]
-[; ;main.c: 130: configureTimers();
-"130
-[e ( _configureTimers ..  ]
-[; ;main.c: 132: TRISBbits.TRISB4 = 1;
-"132
-[e = . . _TRISBbits 0 4 -> -> 1 `i `uc ]
-[; ;main.c: 133: ANSELBbits.ANSB4 = 0;
-"133
-[e = . . _ANSELBbits 0 4 -> -> 0 `i `uc ]
-"137
-[v _controlLastMillis `ul ~T0 @X0 1 a ]
-[; ;main.c: 137: unsigned long controlLastMillis = 0;
-[e = _controlLastMillis -> -> -> 0 `i `l `ul ]
+[; ;main.c: 138: configureComparators();
 "138
-[v _lcdLastMillis `ul ~T0 @X0 1 a ]
-[; ;main.c: 138: unsigned long lcdLastMillis = 0;
-[e = _lcdLastMillis -> -> -> 0 `i `l `ul ]
+[e ( _configureComparators ..  ]
+[; ;main.c: 139: configureTimers();
 "139
-[v _speedLastMillis `ul ~T0 @X0 1 a ]
-[; ;main.c: 139: unsigned long speedLastMillis = 0;
-[e = _speedLastMillis -> -> -> 0 `i `l `ul ]
-"140
-[v _leftCountTracker `i ~T0 @X0 1 a ]
-[; ;main.c: 140: int leftCountTracker = 0;
-[e = _leftCountTracker -> 0 `i ]
+[e ( _configureTimers ..  ]
+[; ;main.c: 141: TRISBbits.TRISB4 = 1;
 "141
-[v _rightCountTracker `i ~T0 @X0 1 a ]
-[; ;main.c: 141: int rightCountTracker = 0;
-[e = _rightCountTracker -> 0 `i ]
-[; ;main.c: 144: LCDinit();
-"144
-[e ( _LCDinit ..  ]
-[; ;main.c: 145: printf("Event: %3d", event);
-"145
-[e ( _printf , (. :s 1C -> _event `i ]
-[; ;main.c: 149: while(1)
+[e = . . _TRISBbits 0 4 -> -> 1 `i `uc ]
+[; ;main.c: 142: ANSELBbits.ANSB4 = 0;
+"142
+[e = . . _ANSELBbits 0 4 -> -> 0 `i `uc ]
+"146
+[v _controlLastMillis `ul ~T0 @X0 1 a ]
+[; ;main.c: 146: unsigned long controlLastMillis = 0;
+[e = _controlLastMillis -> -> -> 0 `i `l `ul ]
+"147
+[v _lcdLastMillis `ul ~T0 @X0 1 a ]
+[; ;main.c: 147: unsigned long lcdLastMillis = 0;
+[e = _lcdLastMillis -> -> -> 0 `i `l `ul ]
+"148
+[v _speedLastMillis `ul ~T0 @X0 1 a ]
+[; ;main.c: 148: unsigned long speedLastMillis = 0;
+[e = _speedLastMillis -> -> -> 0 `i `l `ul ]
 "149
-[e :U 1131 ]
-[; ;main.c: 150: {
+[v _leftCountTracker `i ~T0 @X0 1 a ]
+[; ;main.c: 149: int leftCountTracker = 0;
+[e = _leftCountTracker -> 0 `i ]
 "150
-{
-[; ;main.c: 155: if(lcdLastMillis + 5000 < elapsedMillis)
-"155
-[e $ ! < + _lcdLastMillis -> -> -> 5000 `i `l `ul _elapsedMillis 1133  ]
-[; ;main.c: 156: {
-"156
-{
-[; ;main.c: 157: LCDclear();
-"157
-[e ( _LCDclear ..  ]
-[; ;main.c: 158: printf("Speed: %d", rightWheelMeasuredSpeed);
+[v _rightCountTracker `i ~T0 @X0 1 a ]
+[; ;main.c: 150: int rightCountTracker = 0;
+[e = _rightCountTracker -> 0 `i ]
+[; ;main.c: 153: LCDinit();
+"153
+[e ( _LCDinit ..  ]
+[; ;main.c: 154: printf("Event: %3d", event);
+"154
+[e ( _printf , (. :s 1C -> _event `i ]
+[; ;main.c: 158: while(1)
 "158
-[e ( _printf , (. :s 2C _rightWheelMeasuredSpeed ]
-[; ;main.c: 159: lcdLastMillis = elapsedMillis;
+[e :U 1131 ]
+[; ;main.c: 159: {
 "159
-[e = _lcdLastMillis _elapsedMillis ]
-"160
-}
-[e :U 1133 ]
-[; ;main.c: 160: }
+{
+[; ;main.c: 164: if(lcdLastMillis + 250 < elapsedMillis)
+"164
+[e $ ! < + _lcdLastMillis -> -> -> 250 `i `l `ul _elapsedMillis 1133  ]
 [; ;main.c: 165: {
 "165
 {
-[; ;main.c: 166: controlLastMillis = elapsedMillis;
+[; ;main.c: 166: LCDclear();
 "166
-[e = _controlLastMillis _elapsedMillis ]
+[e ( _LCDclear ..  ]
+[; ;main.c: 167: printf("Speed: %d", rightWheelMeasuredSpeed);
+"167
+[e ( _printf , (. :s 2C _rightWheelMeasuredSpeed ]
+[; ;main.c: 168: lcdLastMillis = elapsedMillis;
 "168
-}
-[; ;main.c: 168: }
-[; ;main.c: 171: if(speedLastMillis + 1000 < elapsedMillis)
+[e = _lcdLastMillis _elapsedMillis ]
+[; ;main.c: 169: LCDgotoLineTwo();
+"169
+[e ( _LCDgotoLineTwo ..  ]
+[; ;main.c: 170: printf("LW: %d ", leftWheelCount);
+"170
+[e ( _printf , (. :s 3C _leftWheelCount ]
+[; ;main.c: 171: printf(" RW: %d", rightWheelCount);
 "171
-[e $ ! < + _speedLastMillis -> -> -> 1000 `i `l `ul _elapsedMillis 1134  ]
-[; ;main.c: 172: {
+[e ( _printf , (. :s 4C _rightWheelCount ]
 "172
-{
-[; ;main.c: 175: rightWheelMeasuredSpeed = (int) ((rightWheelCount - rightCountTracker) * 1350 / (elapsedMillis - speedLastMillis));
-"175
-[e = _rightWheelMeasuredSpeed -> / * - _rightWheelCount -> -> _rightCountTracker `l `ul -> -> -> 1350 `i `l `ul - _elapsedMillis _speedLastMillis `i ]
-[; ;main.c: 177: leftWheelMeasuredSpeed = (int) ((leftWheelCount - leftCountTracker) * 1350 / (elapsedMillis - speedLastMillis));
+}
+[e :U 1133 ]
+[; ;main.c: 172: }
+[; ;main.c: 176: if(controlLastMillis + 250 < elapsedMillis)
+"176
+[e $ ! < + _controlLastMillis -> -> -> 250 `i `l `ul _elapsedMillis 1134  ]
+[; ;main.c: 177: {
 "177
-[e = _leftWheelMeasuredSpeed -> / * - _leftWheelCount -> -> _leftCountTracker `l `ul -> -> -> 1350 `i `l `ul - _elapsedMillis _speedLastMillis `i ]
-[; ;main.c: 179: speedLastMillis = elapsedMillis;
+{
+[; ;main.c: 178: controlLastMillis = elapsedMillis;
+"178
+[e = _controlLastMillis _elapsedMillis ]
+[; ;main.c: 179: excerciseControl();
 "179
-[e = _speedLastMillis _elapsedMillis ]
-[; ;main.c: 181: rightCountTracker = rightWheelCount;
-"181
-[e = _rightCountTracker -> _rightWheelCount `i ]
-[; ;main.c: 183: leftCountTracker = leftWheelCount;
-"183
-[e = _leftCountTracker -> _leftWheelCount `i ]
-"184
+[e ( _excerciseControl ..  ]
+"180
 }
 [e :U 1134 ]
-"187
+[; ;main.c: 180: }
+[; ;main.c: 183: if(speedLastMillis + 750 < elapsedMillis)
+"183
+[e $ ! < + _speedLastMillis -> -> -> 750 `i `l `ul _elapsedMillis 1135  ]
+[; ;main.c: 184: {
+"184
+{
+[; ;main.c: 189: rightWheelMeasuredSpeed = (int) ((rightWheelCount - rightCountTracker) * (3.4 * 750 ) / (elapsedMillis - speedLastMillis));
+"189
+[e = _rightWheelMeasuredSpeed -> / * -> - _rightWheelCount -> -> _rightCountTracker `l `ul `d * .3.4 -> -> 750 `i `d -> - _elapsedMillis _speedLastMillis `d `i ]
+[; ;main.c: 191: leftWheelMeasuredSpeed = (int) ((leftWheelCount - leftCountTracker) * (3.4 * 750) / (elapsedMillis - speedLastMillis));
+"191
+[e = _leftWheelMeasuredSpeed -> / * -> - _leftWheelCount -> -> _leftCountTracker `l `ul `d * .3.4 -> -> 750 `i `d -> - _elapsedMillis _speedLastMillis `d `i ]
+[; ;main.c: 193: speedLastMillis = elapsedMillis;
+"193
+[e = _speedLastMillis _elapsedMillis ]
+[; ;main.c: 195: rightCountTracker = rightWheelCount;
+"195
+[e = _rightCountTracker -> _rightWheelCount `i ]
+[; ;main.c: 197: leftCountTracker = leftWheelCount;
+"197
+[e = _leftCountTracker -> _leftWheelCount `i ]
+"199
+}
+[e :U 1135 ]
+"202
 }
 [e :U 1130 ]
-"149
+"158
 [e $U 1131  ]
 [e :U 1132 ]
-[; ;main.c: 184: }
-[; ;main.c: 187: }
-[; ;main.c: 189: return;
-"189
+[; ;main.c: 199: }
+[; ;main.c: 202: }
+[; ;main.c: 204: return;
+"204
 [e $UE 1129  ]
-[; ;main.c: 190: }
-"190
+[; ;main.c: 205: }
+"205
 [e :UE 1129 ]
 }
-"192
-[v _limitWheelSpeeds `(v ~T0 @X0 1 ef2`*i`*i ]
-"193
+"207
+[v _limitWheelSpeeds `(v ~T0 @X0 1 ef3`*i`*i`*i ]
+"208
 {
-[; ;main.c: 192: void limitWheelSpeeds(int* leftWheelMeasuredSpeed, int* rightWheelMeasuredSpeed)
-[; ;main.c: 193: {
+[; ;main.c: 207: void limitWheelSpeeds(int* leftWheelSpeed, int* rightWheelSpeed, int* speedCompensation)
+[; ;main.c: 208: {
 [e :U _limitWheelSpeeds ]
-[v _leftWheelMeasuredSpeed `*i ~T0 @X0 1 r1 ]
-[v _rightWheelMeasuredSpeed `*i ~T0 @X0 1 r2 ]
+"207
+[v _leftWheelSpeed `*i ~T0 @X0 1 r1 ]
+[v _rightWheelSpeed `*i ~T0 @X0 1 r2 ]
+[v _speedCompensation `*i ~T0 @X0 1 r3 ]
+"208
 [f ]
-[; ;main.c: 197: if (*leftWheelMeasuredSpeed >= 100)
-"197
-[e $ ! >= *U _leftWheelMeasuredSpeed -> 100 `i 1136  ]
-[; ;main.c: 198: {
-"198
+[; ;main.c: 212: if (*leftWheelSpeed >= 100)
+"212
+[e $ ! >= *U _leftWheelSpeed -> 100 `i 1137  ]
+[; ;main.c: 213: {
+"213
 {
-[; ;main.c: 199: *leftWheelMeasuredSpeed = 100;
-"199
-[e = *U _leftWheelMeasuredSpeed -> 100 `i ]
-"200
-}
-[e :U 1136 ]
-[; ;main.c: 200: }
-[; ;main.c: 201: if (*leftWheelMeasuredSpeed <= -100)
-"201
-[e $ ! <= *U _leftWheelMeasuredSpeed -U -> 100 `i 1137  ]
-[; ;main.c: 202: {
-"202
-{
-[; ;main.c: 203: *leftWheelMeasuredSpeed = -100;
-"203
-[e = *U _leftWheelMeasuredSpeed -U -> 100 `i ]
-"204
+[; ;main.c: 214: *leftWheelSpeed = 100;
+"214
+[e = *U _leftWheelSpeed -> 100 `i ]
+"215
 }
 [e :U 1137 ]
-[; ;main.c: 204: }
-[; ;main.c: 206: if (*rightWheelMeasuredSpeed >= 80)
-"206
-[e $ ! >= *U _rightWheelMeasuredSpeed -> 80 `i 1138  ]
-[; ;main.c: 207: {
-"207
+[; ;main.c: 215: }
+[; ;main.c: 216: if (*leftWheelSpeed <= -100)
+"216
+[e $ ! <= *U _leftWheelSpeed -U -> 100 `i 1138  ]
+[; ;main.c: 217: {
+"217
 {
-[; ;main.c: 208: *rightWheelMeasuredSpeed = 80;
-"208
-[e = *U _rightWheelMeasuredSpeed -> 80 `i ]
-"209
+[; ;main.c: 218: *leftWheelSpeed = -100;
+"218
+[e = *U _leftWheelSpeed -U -> 100 `i ]
+"219
 }
 [e :U 1138 ]
-[; ;main.c: 209: }
-[; ;main.c: 210: if (*rightWheelMeasuredSpeed <= -80)
-"210
-[e $ ! <= *U _rightWheelMeasuredSpeed -U -> 80 `i 1139  ]
-[; ;main.c: 211: {
-"211
+[; ;main.c: 219: }
+[; ;main.c: 221: if (*rightWheelSpeed >= 50)
+"221
+[e $ ! >= *U _rightWheelSpeed -> 50 `i 1139  ]
+[; ;main.c: 222: {
+"222
 {
-[; ;main.c: 212: *rightWheelMeasuredSpeed = -80;
-"212
-[e = *U _rightWheelMeasuredSpeed -U -> 80 `i ]
-"213
+[; ;main.c: 223: *rightWheelSpeed = 60;
+"223
+[e = *U _rightWheelSpeed -> 60 `i ]
+"224
 }
 [e :U 1139 ]
-[; ;main.c: 213: }
-[; ;main.c: 214: }
-"214
-[e :UE 1135 ]
-}
-"216
-[v _wheelVelocity `(v ~T0 @X0 1 ef3`uc`i`i ]
-"217
-{
-[; ;main.c: 216: void wheelVelocity(char wheel, int speed, int speedCompensation)
-[; ;main.c: 217: {
-[e :U _wheelVelocity ]
-"216
-[v _wheel `uc ~T0 @X0 1 r1 ]
-[v _speed `i ~T0 @X0 1 r2 ]
-[v _speedCompensation `i ~T0 @X0 1 r3 ]
-"217
-[f ]
-[; ;main.c: 218: if(wheel == 'r')
-"218
-[e $ ! == -> _wheel `ui -> 114 `ui 1141  ]
-[; ;main.c: 219: {
-"219
-{
-[; ;main.c: 222: rightWheelCommandedPW = (int) (675 + speed);
-"222
-[e = _rightWheelCommandedPW -> + -> 675 `i _speed `ui ]
-"223
-}
-[e :U 1141 ]
-[; ;main.c: 223: }
-[; ;main.c: 225: if(wheel == 'l')
+[; ;main.c: 224: }
+[; ;main.c: 225: if (*rightWheelSpeed <= -50)
 "225
-[e $ ! == -> _wheel `ui -> 108 `ui 1142  ]
+[e $ ! <= *U _rightWheelSpeed -U -> 50 `i 1140  ]
 [; ;main.c: 226: {
 "226
 {
-[; ;main.c: 229: leftWheelCommandedPW = (int) (688 - (speedCompensation + speed));
+[; ;main.c: 227: *rightWheelSpeed = -50;
+"227
+[e = *U _rightWheelSpeed -U -> 50 `i ]
+"228
+}
+[e :U 1140 ]
+[; ;main.c: 228: }
+[; ;main.c: 229: if(*speedCompensation > 50)
 "229
-[e = _leftWheelCommandedPW -> - -> 688 `i + _speedCompensation _speed `ui ]
+[e $ ! > *U _speedCompensation -> 50 `i 1141  ]
+[; ;main.c: 230: {
 "230
-}
-[e :U 1142 ]
-[; ;main.c: 230: }
-[; ;main.c: 231: }
-"231
-[e :UE 1140 ]
-}
-[v F7961 `(v ~T0 @X0 1 tf ]
-"234
-[v _ISR `IF7961 ~T0 @X0 1 e ]
-"235
 {
-[; ;main.c: 234: void interrupt ISR()
-[; ;main.c: 235: {
-[e :U _ISR ]
+[; ;main.c: 231: *speedCompensation = 50;
+"231
+[e = *U _speedCompensation -> 50 `i ]
+"232
+}
+[e :U 1141 ]
+[; ;main.c: 232: }
+[; ;main.c: 233: }
+"233
+[e :UE 1136 ]
+}
+"235
+[v _wheelVelocity `(v ~T0 @X0 1 ef3`uc`i`i ]
+"236
+{
+[; ;main.c: 235: void wheelVelocity(char wheel, int speed, int speedCompensation)
+[; ;main.c: 236: {
+[e :U _wheelVelocity ]
+"235
+[v _wheel `uc ~T0 @X0 1 r1 ]
+[v _speed `i ~T0 @X0 1 r2 ]
+[v _speedCompensation `i ~T0 @X0 1 r3 ]
+"236
 [f ]
-[; ;main.c: 237: if (CCP2IE && CCP2IF)
+[; ;main.c: 237: if(wheel == 'r')
 "237
-[e $ ! && _CCP2IE _CCP2IF 1144  ]
+[e $ ! == -> _wheel `ui -> 114 `ui 1143  ]
 [; ;main.c: 238: {
 "238
 {
-[; ;main.c: 240: if(LATDbits.LATD1 == 1)
-"240
-[e $ ! == -> . . _LATDbits 0 1 `i -> 1 `i 1145  ]
-[; ;main.c: 241: {
+[; ;main.c: 241: rightWheelCommandedPW = (int) (720 + speed * 1);
 "241
-{
-[; ;main.c: 242: LATDbits.LATD1 = 0;
+[e = _rightWheelCommandedPW -> + -> 720 `i * _speed -> 1 `i `ui ]
 "242
-[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 243: CCPR2 = 8000 - CCPR2;
-"243
-[e = _CCPR2 -> - -> -> 8000 `i `ui -> _CCPR2 `ui `us ]
-"244
 }
-[; ;main.c: 244: }
-[e $U 1146  ]
+[e :U 1143 ]
+[; ;main.c: 242: }
+[; ;main.c: 244: if(wheel == 'l')
+"244
+[e $ ! == -> _wheel `ui -> 108 `ui 1144  ]
+[; ;main.c: 245: {
 "245
-[e :U 1145 ]
-[; ;main.c: 245: else
-[; ;main.c: 246: {
-"246
 {
-[; ;main.c: 247: LATDbits.LATD1 = 1;
-"247
-[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 248: CCPR2 = leftWheelCommandedPW;
+[; ;main.c: 248: leftWheelCommandedPW = (int) (735 - (speedCompensation + speed * 1));
 "248
-[e = _CCPR2 -> _leftWheelCommandedPW `us ]
+[e = _leftWheelCommandedPW -> - -> 735 `i + _speedCompensation * _speed -> 1 `i `ui ]
 "249
 }
-[e :U 1146 ]
-[; ;main.c: 249: }
-[; ;main.c: 250: TMR5 = 0;
-"250
-[e = _TMR5 -> -> 0 `i `us ]
-[; ;main.c: 251: CCP2IF = 0;
-"251
-[e = _CCP2IF -> -> 0 `i `b ]
-[; ;main.c: 252: return;
-"252
-[e $UE 1143  ]
-"253
-}
 [e :U 1144 ]
-[; ;main.c: 253: }
-[; ;main.c: 257: if (CCP3IE && CCP3IF)
+[; ;main.c: 249: }
+[; ;main.c: 250: }
+"250
+[e :UE 1142 ]
+}
+[v F7963 `(v ~T0 @X0 1 tf ]
+"253
+[v _ISR `IF7963 ~T0 @X0 1 e ]
+"254
+{
+[; ;main.c: 253: void interrupt ISR()
+[; ;main.c: 254: {
+[e :U _ISR ]
+[f ]
+[; ;main.c: 256: if (CCP2IE && CCP2IF)
+"256
+[e $ ! && _CCP2IE _CCP2IF 1146  ]
+[; ;main.c: 257: {
 "257
-[e $ ! && _CCP3IE _CCP3IF 1147  ]
-[; ;main.c: 258: {
-"258
 {
-[; ;main.c: 260: if(LATDbits.LATD0 == 1)
+[; ;main.c: 259: if(LATDbits.LATD1 == 1)
+"259
+[e $ ! == -> . . _LATDbits 0 1 `i -> 1 `i 1147  ]
+[; ;main.c: 260: {
 "260
-[e $ ! == -> . . _LATDbits 0 0 `i -> 1 `i 1148  ]
-[; ;main.c: 261: {
+{
+[; ;main.c: 261: LATDbits.LATD1 = 0;
 "261
-{
-[; ;main.c: 262: LATDbits.LATD0 = 0;
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 262: CCPR2 = 8000 - CCPR2;
 "262
-[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 263: CCPR3 = 8000 - CCPR3;
+[e = _CCPR2 -> - -> -> 8000 `i `ui -> _CCPR2 `ui `us ]
 "263
-[e = _CCPR3 -> - -> -> 8000 `i `ui -> _CCPR3 `ui `us ]
+}
+[; ;main.c: 263: }
+[e $U 1148  ]
 "264
-}
-[; ;main.c: 264: }
-[e $U 1149  ]
-"265
-[e :U 1148 ]
-[; ;main.c: 265: else
-[; ;main.c: 266: {
-"266
-{
-[; ;main.c: 267: LATDbits.LATD0 = 1;
-"267
-[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 268: CCPR3 = rightWheelCommandedPW;
-"268
-[e = _CCPR3 -> _rightWheelCommandedPW `us ]
-"269
-}
-[e :U 1149 ]
-[; ;main.c: 269: }
-[; ;main.c: 270: CCP3IF = 0;
-"270
-[e = _CCP3IF -> -> 0 `i `b ]
-[; ;main.c: 271: TMR1 = 0;
-"271
-[e = _TMR1 -> -> 0 `i `us ]
-[; ;main.c: 273: return;
-"273
-[e $UE 1143  ]
-"276
-}
 [e :U 1147 ]
-[; ;main.c: 276: }
-[; ;main.c: 286: if(C2IF && C2IE)
-"286
-[e $ ! && _C2IF _C2IE 1150  ]
-[; ;main.c: 287: {
-"287
+[; ;main.c: 264: else
+[; ;main.c: 265: {
+"265
 {
-[; ;main.c: 288: rightWheelCount++;
-"288
-[e ++ _rightWheelCount -> -> -> 1 `i `l `ul ]
-"289
-[v _dummy `uc ~T0 @X0 1 a ]
-[; ;main.c: 289: char dummy = CM2CON0;
-[e = _dummy _CM2CON0 ]
-[; ;main.c: 290: C2IF = 0;
-"290
-[e = _C2IF -> -> 0 `i `b ]
-"291
+[; ;main.c: 266: LATDbits.LATD1 = 1;
+"266
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 267: CCPR2 = leftWheelCommandedPW;
+"267
+[e = _CCPR2 -> _leftWheelCommandedPW `us ]
+"268
 }
-[e :U 1150 ]
-[; ;main.c: 291: }
-[; ;main.c: 296: if (TMR2IE && TMR2IF)
-"296
-[e $ ! && _TMR2IE _TMR2IF 1151  ]
-[; ;main.c: 297: {
-"297
+[e :U 1148 ]
+[; ;main.c: 268: }
+[; ;main.c: 269: TMR5 = 0;
+"269
+[e = _TMR5 -> -> 0 `i `us ]
+[; ;main.c: 270: CCP2IF = 0;
+"270
+[e = _CCP2IF -> -> 0 `i `b ]
+[; ;main.c: 271: return;
+"271
+[e $UE 1145  ]
+"272
+}
+[e :U 1146 ]
+[; ;main.c: 272: }
+[; ;main.c: 276: if (CCP3IE && CCP3IF)
+"276
+[e $ ! && _CCP3IE _CCP3IF 1149  ]
+[; ;main.c: 277: {
+"277
 {
-[; ;main.c: 298: elapsedMillis++;
-"298
-[e ++ _elapsedMillis -> -> -> 1 `i `l `ul ]
-[; ;main.c: 299: PIR1bits.TMR2IF = 0;
-"299
-[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 300: return;
-"300
-[e $UE 1143  ]
-"301
+[; ;main.c: 279: if(LATDbits.LATD0 == 1)
+"279
+[e $ ! == -> . . _LATDbits 0 0 `i -> 1 `i 1150  ]
+[; ;main.c: 280: {
+"280
+{
+[; ;main.c: 281: LATDbits.LATD0 = 0;
+"281
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 282: CCPR3 = 8000 - CCPR3;
+"282
+[e = _CCPR3 -> - -> -> 8000 `i `ui -> _CCPR3 `ui `us ]
+"283
+}
+[; ;main.c: 283: }
+[e $U 1151  ]
+"284
+[e :U 1150 ]
+[; ;main.c: 284: else
+[; ;main.c: 285: {
+"285
+{
+[; ;main.c: 286: LATDbits.LATD0 = 1;
+"286
+[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 287: CCPR3 = rightWheelCommandedPW;
+"287
+[e = _CCPR3 -> _rightWheelCommandedPW `us ]
+"288
 }
 [e :U 1151 ]
-[; ;main.c: 301: }
-[; ;main.c: 303: }
-"303
-[e :UE 1143 ]
+[; ;main.c: 288: }
+[; ;main.c: 289: CCP3IF = 0;
+"289
+[e = _CCP3IF -> -> 0 `i `b ]
+[; ;main.c: 290: TMR1 = 0;
+"290
+[e = _TMR1 -> -> 0 `i `us ]
+[; ;main.c: 292: return;
+"292
+[e $UE 1145  ]
+"295
 }
+[e :U 1149 ]
+[; ;main.c: 295: }
+[; ;main.c: 300: if(C1IF && C1IE)
+"300
+[e $ ! && _C1IF _C1IE 1152  ]
+[; ;main.c: 301: {
+"301
+{
+[; ;main.c: 302: leftWheelCount++;
+"302
+[e ++ _leftWheelCount -> -> -> 1 `i `l `ul ]
+"303
+[v _dummy `uc ~T0 @X0 1 a ]
+[; ;main.c: 303: char dummy = CM1CON0;
+[e = _dummy _CM1CON0 ]
+[; ;main.c: 304: C1IF = 0;
+"304
+[e = _C1IF -> -> 0 `i `b ]
+"305
+}
+[e :U 1152 ]
+[; ;main.c: 305: }
+[; ;main.c: 306: if(C2IF && C2IE)
 "306
-[v _excerciseControl `(v ~T0 @X0 1 ef ]
+[e $ ! && _C2IF _C2IE 1153  ]
+[; ;main.c: 307: {
 "307
 {
-[; ;main.c: 306: void excerciseControl()
-[; ;main.c: 307: {
-[e :U _excerciseControl ]
-[f ]
-[; ;main.c: 308: switch(event){
+[; ;main.c: 308: rightWheelCount++;
 "308
-[e $U 1154  ]
-{
-[; ;main.c: 309: case 0:
+[e ++ _rightWheelCount -> -> -> 1 `i `l `ul ]
 "309
-[e :U 1155 ]
-[; ;main.c: 312: if(rightWheelMeasuredSpeed < 10)
-"312
-[e $ ! < _rightWheelMeasuredSpeed -> 10 `i 1156  ]
-[; ;main.c: 313: {
-"313
-{
-[; ;main.c: 314: wheelVelocity('r', ++rightWheelMeasuredSpeed, speedCompensation);
-"314
-[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc =+ _rightWheelMeasuredSpeed -> 1 `i _speedCompensation ]
-[; ;main.c: 315: wheelVelocity('l', ++leftWheelMeasuredSpeed, speedCompensation);
-"315
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc =+ _leftWheelMeasuredSpeed -> 1 `i _speedCompensation ]
-"316
+[v _dummy `uc ~T0 @X0 1 a ]
+[; ;main.c: 309: char dummy = CM2CON0;
+[e = _dummy _CM2CON0 ]
+[; ;main.c: 310: C2IF = 0;
+"310
+[e = _C2IF -> -> 0 `i `b ]
+"311
 }
-[e :U 1156 ]
-[; ;main.c: 316: }
-[; ;main.c: 317: if(rightWheelMeasuredSpeed > 55)
+[e :U 1153 ]
+[; ;main.c: 311: }
+[; ;main.c: 316: if (TMR2IE && TMR2IF)
+"316
+[e $ ! && _TMR2IE _TMR2IF 1154  ]
+[; ;main.c: 317: {
 "317
-[e $ ! > _rightWheelMeasuredSpeed -> 55 `i 1157  ]
-[; ;main.c: 318: {
-"318
 {
-[; ;main.c: 319: wheelVelocity('r', --rightWheelMeasuredSpeed, speedCompensation);
+[; ;main.c: 318: elapsedMillis++;
+"318
+[e ++ _elapsedMillis -> -> -> 1 `i `l `ul ]
+[; ;main.c: 319: PIR1bits.TMR2IF = 0;
 "319
-[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc =- _rightWheelMeasuredSpeed -> 1 `i _speedCompensation ]
-[; ;main.c: 320: wheelVelocity('l', --leftWheelMeasuredSpeed, speedCompensation);
+[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 320: return;
 "320
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc =- _leftWheelMeasuredSpeed -> 1 `i _speedCompensation ]
+[e $UE 1145  ]
 "321
 }
-[e :U 1157 ]
+[e :U 1154 ]
 [; ;main.c: 321: }
-[; ;main.c: 322: if(leftWheelCount > rightWheelCount + 2)
-"322
-[e $ ! > _leftWheelCount + _rightWheelCount -> -> -> 2 `i `l `ul 1158  ]
-[; ;main.c: 324: {
-"324
-{
-[; ;main.c: 325: speedCompensation--;
-"325
-[e -- _speedCompensation -> 1 `i ]
-[; ;main.c: 326: wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
-"326
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc _leftWheelMeasuredSpeed _speedCompensation ]
-"327
+[; ;main.c: 323: }
+"323
+[e :UE 1145 ]
 }
-[e :U 1158 ]
-[; ;main.c: 327: }
-[; ;main.c: 328: if(rightWheelCount > leftWheelCount + 2)
-"328
-[e $ ! > _rightWheelCount + _leftWheelCount -> -> -> 2 `i `l `ul 1159  ]
-[; ;main.c: 330: {
-"330
+"326
+[v _excerciseControl `(v ~T0 @X0 1 ef ]
+"327
 {
-[; ;main.c: 331: speedCompensation++;
+[; ;main.c: 326: void excerciseControl()
+[; ;main.c: 327: {
+[e :U _excerciseControl ]
+[f ]
+"328
+[v F7966 `i ~T0 @X0 1 s leftWheelCommandedSpeed ]
+[i F7966
+-> 30 `i
+]
+"329
+[v F7967 `i ~T0 @X0 1 s rightWheelCommandedSpeed ]
+[i F7967
+-> 30 `i
+]
+[; ;main.c: 328: static int leftWheelCommandedSpeed = 30;
+[; ;main.c: 329: static int rightWheelCommandedSpeed = 30;
+[; ;main.c: 331: switch(event){
 "331
-[e ++ _speedCompensation -> 1 `i ]
-[; ;main.c: 332: wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
+[e $U 1157  ]
+{
+[; ;main.c: 332: case 0:
 "332
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc _leftWheelMeasuredSpeed _speedCompensation ]
-"333
+[e :U 1158 ]
+[; ;main.c: 335: if(rightWheelMeasuredSpeed < 20)
+"335
+[e $ ! < _rightWheelMeasuredSpeed -> 20 `i 1159  ]
+[; ;main.c: 336: {
+"336
+{
+[; ;main.c: 337: rightWheelCommandedSpeed += 1;
+"337
+[e =+ F7967 -> 1 `i ]
+[; ;main.c: 338: leftWheelCommandedSpeed += 1;
+"338
+[e =+ F7966 -> 1 `i ]
+[; ;main.c: 339: wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+"339
+[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc F7967 _speedCompensation ]
+[; ;main.c: 340: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+"340
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F7966 _speedCompensation ]
+"341
 }
 [e :U 1159 ]
-[; ;main.c: 333: }
-[; ;main.c: 334: if(rightWheelCount >= 113)
-"334
-[e $ ! >= _rightWheelCount -> -> -> 113 `i `l `ul 1160  ]
-[; ;main.c: 335: {
-"335
-{
-[; ;main.c: 336: rightWheelCount = 0;
-"336
-[e = _rightWheelCount -> -> -> 0 `i `l `ul ]
-[; ;main.c: 337: leftWheelCount = 0;
-"337
-[e = _leftWheelCount -> -> -> 0 `i `l `ul ]
-[; ;main.c: 338: wheelVelocity('r', 0, speedCompensation);
-"338
-[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc -> 0 `i _speedCompensation ]
-[; ;main.c: 339: wheelVelocity('l', 0, speedCompensation);
-"339
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc -> 0 `i _speedCompensation ]
-[; ;main.c: 340: while(PORTBbits.RB0 == 1)
-"340
-[e $U 1161  ]
-[e :U 1162 ]
-[; ;main.c: 341: {
-"341
-{
-[; ;main.c: 342: continue;
+[; ;main.c: 341: }
+[; ;main.c: 342: if(rightWheelMeasuredSpeed > 50)
 "342
-[e $U 1161  ]
+[e $ ! > _rightWheelMeasuredSpeed -> 50 `i 1160  ]
+[; ;main.c: 343: {
 "343
-}
-[e :U 1161 ]
-"340
-[e $ == -> . . _PORTBbits 0 0 `i -> 1 `i 1162  ]
-[e :U 1163 ]
-[; ;main.c: 343: }
-[; ;main.c: 344: event++;
+{
+[; ;main.c: 344: rightWheelCommandedSpeed -= 1;
 "344
-[e ++ _event -> -> 1 `i `uc ]
+[e =- F7967 -> 1 `i ]
+[; ;main.c: 345: leftWheelCommandedSpeed -= 1;
 "345
+[e =- F7966 -> 1 `i ]
+[; ;main.c: 346: wheelVelocity('r', --rightWheelCommandedSpeed, speedCompensation);
+"346
+[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc =- F7967 -> 1 `i _speedCompensation ]
+[; ;main.c: 347: wheelVelocity('l', --leftWheelCommandedSpeed, speedCompensation);
+"347
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc =- F7966 -> 1 `i _speedCompensation ]
+"348
 }
 [e :U 1160 ]
-[; ;main.c: 345: }
-[; ;main.c: 346: limitWheelSpeeds(&leftWheelMeasuredSpeed, &rightWheelMeasuredSpeed);
-"346
-[e ( _limitWheelSpeeds (2 , &U _leftWheelMeasuredSpeed &U _rightWheelMeasuredSpeed ]
-[; ;main.c: 347: break;
-"347
-[e $U 1153  ]
-[; ;main.c: 350: case 1:
-"350
-[e :U 1164 ]
-[; ;main.c: 354: if(rightWheelMeasuredSpeed < 10)
-"354
-[e $ ! < _rightWheelMeasuredSpeed -> 10 `i 1165  ]
-[; ;main.c: 355: {
-"355
+[; ;main.c: 348: }
+[; ;main.c: 349: if(leftWheelCount > rightWheelCount + 2)
+"349
+[e $ ! > _leftWheelCount + _rightWheelCount -> -> -> 2 `i `l `ul 1161  ]
+[; ;main.c: 351: {
+"351
 {
-[; ;main.c: 356: wheelVelocity('r', ++rightWheelMeasuredSpeed, speedCompensation);
-"356
-[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc =+ _rightWheelMeasuredSpeed -> 1 `i _speedCompensation ]
-[; ;main.c: 357: wheelVelocity('l', --leftWheelMeasuredSpeed, speedCompensation);
+[; ;main.c: 352: speedCompensation -= 5;
+"352
+[e =- _speedCompensation -> 5 `i ]
+[; ;main.c: 353: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+"353
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F7966 _speedCompensation ]
+"354
+}
+[e :U 1161 ]
+[; ;main.c: 354: }
+[; ;main.c: 355: if(rightWheelCount > leftWheelCount + 2)
+"355
+[e $ ! > _rightWheelCount + _leftWheelCount -> -> -> 2 `i `l `ul 1162  ]
+[; ;main.c: 357: {
 "357
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc =- _leftWheelMeasuredSpeed -> 1 `i _speedCompensation ]
+{
+[; ;main.c: 358: speedCompensation += 5;
 "358
+[e =+ _speedCompensation -> 5 `i ]
+[; ;main.c: 359: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+"359
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F7966 _speedCompensation ]
+"360
+}
+[e :U 1162 ]
+[; ;main.c: 360: }
+[; ;main.c: 361: if(rightWheelCount >= 500)
+"361
+[e $ ! >= _rightWheelCount -> -> -> 500 `i `l `ul 1163  ]
+[; ;main.c: 362: {
+"362
+{
+[; ;main.c: 363: rightWheelCount = 0;
+"363
+[e = _rightWheelCount -> -> -> 0 `i `l `ul ]
+[; ;main.c: 364: leftWheelCount = 0;
+"364
+[e = _leftWheelCount -> -> -> 0 `i `l `ul ]
+[; ;main.c: 365: leftWheelCommandedSpeed = 0;
+"365
+[e = F7966 -> 0 `i ]
+[; ;main.c: 366: rightWheelCommandedSpeed = 0;
+"366
+[e = F7967 -> 0 `i ]
+[; ;main.c: 367: event += 5;
+"367
+[e =+ _event -> -> 5 `i `uc ]
+[; ;main.c: 368: speedCompensation = 0;
+"368
+[e = _speedCompensation -> 0 `i ]
+[; ;main.c: 369: wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+"369
+[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc F7967 _speedCompensation ]
+[; ;main.c: 370: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+"370
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F7966 _speedCompensation ]
+"372
+}
+[e :U 1163 ]
+[; ;main.c: 372: }
+[; ;main.c: 373: limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
+"373
+[e ( _limitWheelSpeeds (3 , , &U F7966 &U F7967 &U _speedCompensation ]
+[; ;main.c: 374: break;
+"374
+[e $U 1156  ]
+[; ;main.c: 377: case 1:
+"377
+[e :U 1164 ]
+[; ;main.c: 381: if(rightWheelMeasuredSpeed < 10)
+"381
+[e $ ! < _rightWheelMeasuredSpeed -> 10 `i 1165  ]
+[; ;main.c: 382: {
+"382
+{
+[; ;main.c: 383: wheelVelocity('r', ++rightWheelCommandedSpeed, speedCompensation);
+"383
+[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc =+ F7967 -> 1 `i _speedCompensation ]
+[; ;main.c: 384: wheelVelocity('l', --leftWheelCommandedSpeed, speedCompensation);
+"384
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc =- F7966 -> 1 `i _speedCompensation ]
+"385
 }
 [e :U 1165 ]
-[; ;main.c: 358: }
-[; ;main.c: 359: if(rightWheelMeasuredSpeed > 12)
-"359
+[; ;main.c: 385: }
+[; ;main.c: 386: if(rightWheelMeasuredSpeed > 12)
+"386
 [e $ ! > _rightWheelMeasuredSpeed -> 12 `i 1166  ]
-[; ;main.c: 360: {
-"360
+[; ;main.c: 387: {
+"387
 {
-[; ;main.c: 361: wheelVelocity('r', --rightWheelMeasuredSpeed, speedCompensation);
-"361
-[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc =- _rightWheelMeasuredSpeed -> 1 `i _speedCompensation ]
-[; ;main.c: 362: wheelVelocity('l', ++leftWheelMeasuredSpeed, speedCompensation);
-"362
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc =+ _leftWheelMeasuredSpeed -> 1 `i _speedCompensation ]
-"363
+[; ;main.c: 388: wheelVelocity('r', --rightWheelCommandedSpeed, speedCompensation);
+"388
+[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc =- F7967 -> 1 `i _speedCompensation ]
+[; ;main.c: 389: wheelVelocity('l', ++leftWheelCommandedSpeed, speedCompensation);
+"389
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc =+ F7966 -> 1 `i _speedCompensation ]
+"390
 }
 [e :U 1166 ]
-[; ;main.c: 363: }
-[; ;main.c: 364: if(leftWheelCount > (rightWheelCount + 2))
-"364
+[; ;main.c: 390: }
+[; ;main.c: 391: if(leftWheelCount > (rightWheelCount + 2))
+"391
 [e $ ! > _leftWheelCount + _rightWheelCount -> -> -> 2 `i `l `ul 1167  ]
-[; ;main.c: 366: {
-"366
+[; ;main.c: 393: {
+"393
 {
-[; ;main.c: 367: speedCompensation++;
-"367
+[; ;main.c: 394: speedCompensation++;
+"394
 [e ++ _speedCompensation -> 1 `i ]
-[; ;main.c: 368: wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
-"368
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc _leftWheelMeasuredSpeed _speedCompensation ]
-"369
+[; ;main.c: 395: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+"395
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F7966 _speedCompensation ]
+"396
 }
 [e :U 1167 ]
-[; ;main.c: 369: }
-[; ;main.c: 370: if(rightWheelCount > leftWheelCount + 2)
-"370
+[; ;main.c: 396: }
+[; ;main.c: 397: if(rightWheelCount > leftWheelCount + 2)
+"397
 [e $ ! > _rightWheelCount + _leftWheelCount -> -> -> 2 `i `l `ul 1168  ]
-[; ;main.c: 372: {
-"372
+[; ;main.c: 399: {
+"399
 {
-[; ;main.c: 373: speedCompensation--;
-"373
+[; ;main.c: 400: speedCompensation--;
+"400
 [e -- _speedCompensation -> 1 `i ]
-[; ;main.c: 374: wheelVelocity('l', leftWheelMeasuredSpeed,speedCompensation);
-"374
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc _leftWheelMeasuredSpeed _speedCompensation ]
-"375
+[; ;main.c: 401: wheelVelocity('l', leftWheelCommandedSpeed,speedCompensation);
+"401
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F7966 _speedCompensation ]
+"402
 }
 [e :U 1168 ]
-[; ;main.c: 375: }
-[; ;main.c: 377: if(rightWheelCount >= 25)
-"377
+[; ;main.c: 402: }
+[; ;main.c: 404: if(rightWheelCount >= 25)
+"404
 [e $ ! >= _rightWheelCount -> -> -> 25 `i `l `ul 1169  ]
-[; ;main.c: 378: {
-"378
+[; ;main.c: 405: {
+"405
 {
-[; ;main.c: 379: rightWheelCount = 0;
-"379
+[; ;main.c: 406: rightWheelCount = 0;
+"406
 [e = _rightWheelCount -> -> -> 0 `i `l `ul ]
-[; ;main.c: 380: leftWheelCount = 0;
-"380
+[; ;main.c: 407: leftWheelCount = 0;
+"407
 [e = _leftWheelCount -> -> -> 0 `i `l `ul ]
-[; ;main.c: 381: wheelVelocity('r', 0, speedCompensation);
-"381
-[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc -> 0 `i _speedCompensation ]
-[; ;main.c: 382: wheelVelocity('l', 0, speedCompensation);
-"382
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc -> 0 `i _speedCompensation ]
-[; ;main.c: 383: while(PORTBbits.RB0 == 1)
-"383
+[; ;main.c: 408: leftWheelCommandedSpeed = 0;
+"408
+[e = F7966 -> 0 `i ]
+[; ;main.c: 409: rightWheelCommandedSpeed = 0;
+"409
+[e = F7967 -> 0 `i ]
+[; ;main.c: 410: wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+"410
+[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc F7967 _speedCompensation ]
+[; ;main.c: 411: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+"411
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F7966 _speedCompensation ]
+[; ;main.c: 412: while(PORTBbits.RB0 == 1)
+"412
 [e $U 1170  ]
 [e :U 1171 ]
-[; ;main.c: 384: {
-"384
+[; ;main.c: 413: {
+"413
 {
-[; ;main.c: 385: continue;
-"385
+[; ;main.c: 414: continue;
+"414
 [e $U 1170  ]
-"386
+"415
 }
 [e :U 1170 ]
-"383
+"412
 [e $ == -> . . _PORTBbits 0 0 `i -> 1 `i 1171  ]
 [e :U 1172 ]
-[; ;main.c: 386: }
-[; ;main.c: 387: event++;
-"387
+[; ;main.c: 415: }
+[; ;main.c: 416: event++;
+"416
 [e ++ _event -> -> 1 `i `uc ]
-"388
+"417
 }
 [e :U 1169 ]
-[; ;main.c: 388: }
-[; ;main.c: 389: limitWheelSpeeds(&leftWheelMeasuredSpeed, &rightWheelMeasuredSpeed);
-"389
-[e ( _limitWheelSpeeds (2 , &U _leftWheelMeasuredSpeed &U _rightWheelMeasuredSpeed ]
-[; ;main.c: 390: break;
-"390
-[e $U 1153  ]
-[; ;main.c: 393: case 2:
-"393
+[; ;main.c: 417: }
+[; ;main.c: 418: limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
+"418
+[e ( _limitWheelSpeeds (3 , , &U F7966 &U F7967 &U _speedCompensation ]
+[; ;main.c: 419: break;
+"419
+[e $U 1156  ]
+[; ;main.c: 422: case 2:
+"422
 [e :U 1173 ]
-[; ;main.c: 397: if(rightWheelMeasuredSpeed < 30)
-"397
+[; ;main.c: 426: if(rightWheelMeasuredSpeed < 30)
+"426
 [e $ ! < _rightWheelMeasuredSpeed -> 30 `i 1174  ]
-[; ;main.c: 398: {
-"398
+[; ;main.c: 427: {
+"427
 {
-[; ;main.c: 399: wheelVelocity('r', ++rightWheelMeasuredSpeed, speedCompensation);
-"399
-[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc =+ _rightWheelMeasuredSpeed -> 1 `i _speedCompensation ]
-[; ;main.c: 400: wheelVelocity('l', ++leftWheelMeasuredSpeed, speedCompensation);
-"400
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc =+ _leftWheelMeasuredSpeed -> 1 `i _speedCompensation ]
-"401
+[; ;main.c: 428: wheelVelocity('r', ++rightWheelCommandedSpeed, speedCompensation);
+"428
+[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc =+ F7967 -> 1 `i _speedCompensation ]
+[; ;main.c: 429: wheelVelocity('l', ++leftWheelCommandedSpeed, speedCompensation);
+"429
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc =+ F7966 -> 1 `i _speedCompensation ]
+"430
 }
 [e :U 1174 ]
-[; ;main.c: 401: }
-[; ;main.c: 402: if((leftWheelCount * 1.25f) > (rightWheelCount + 2) )
-"402
+[; ;main.c: 430: }
+[; ;main.c: 431: if((leftWheelCount * 1.25f) > (rightWheelCount + 2) )
+"431
 [e $ ! > * -> _leftWheelCount `f -> .1.25 `f -> + _rightWheelCount -> -> -> 2 `i `l `ul `f 1175  ]
-[; ;main.c: 404: {
-"404
+[; ;main.c: 433: {
+"433
 {
-[; ;main.c: 405: speedCompensation--;
-"405
+[; ;main.c: 434: speedCompensation--;
+"434
 [e -- _speedCompensation -> 1 `i ]
-[; ;main.c: 406: wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
-"406
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc _leftWheelMeasuredSpeed _speedCompensation ]
-"407
+[; ;main.c: 435: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+"435
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F7966 _speedCompensation ]
+"436
 }
 [e :U 1175 ]
-[; ;main.c: 407: }
-[; ;main.c: 408: if(rightWheelCount > ((leftWheelCount + 2)*1.25f))
-"408
+[; ;main.c: 436: }
+[; ;main.c: 437: if(rightWheelCount > ((leftWheelCount + 2)*1.25f))
+"437
 [e $ ! > -> _rightWheelCount `f * -> + _leftWheelCount -> -> -> 2 `i `l `ul `f -> .1.25 `f 1176  ]
-[; ;main.c: 410: {
-"410
+[; ;main.c: 439: {
+"439
 {
-[; ;main.c: 411: speedCompensation++;
-"411
+[; ;main.c: 440: speedCompensation++;
+"440
 [e ++ _speedCompensation -> 1 `i ]
-[; ;main.c: 412: wheelVelocity('l', leftWheelMeasuredSpeed, speedCompensation);
-"412
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc _leftWheelMeasuredSpeed _speedCompensation ]
-"413
+[; ;main.c: 441: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+"441
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F7966 _speedCompensation ]
+"442
 }
 [e :U 1176 ]
-[; ;main.c: 413: }
-[; ;main.c: 414: if(rightWheelCount >= 500)
-"414
+[; ;main.c: 442: }
+[; ;main.c: 443: if(rightWheelCount >= 500)
+"443
 [e $ ! >= _rightWheelCount -> -> -> 500 `i `l `ul 1177  ]
-[; ;main.c: 415: {
-"415
+[; ;main.c: 444: {
+"444
 {
-[; ;main.c: 416: rightWheelCount = 0;
-"416
+[; ;main.c: 445: rightWheelCount = 0;
+"445
 [e = _rightWheelCount -> -> -> 0 `i `l `ul ]
-[; ;main.c: 417: leftWheelCount = 0;
-"417
+[; ;main.c: 446: leftWheelCount = 0;
+"446
 [e = _leftWheelCount -> -> -> 0 `i `l `ul ]
-[; ;main.c: 418: wheelVelocity('r', 0, speedCompensation);
-"418
-[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc -> 0 `i _speedCompensation ]
-[; ;main.c: 419: wheelVelocity('l', 0, speedCompensation);
-"419
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc -> 0 `i _speedCompensation ]
-[; ;main.c: 420: while(PORTBbits.RB0 == 1)
-"420
+[; ;main.c: 447: leftWheelCommandedSpeed = 0;
+"447
+[e = F7966 -> 0 `i ]
+[; ;main.c: 448: rightWheelCommandedSpeed = 0;
+"448
+[e = F7967 -> 0 `i ]
+[; ;main.c: 449: wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+"449
+[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc F7967 _speedCompensation ]
+[; ;main.c: 450: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+"450
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F7966 _speedCompensation ]
+[; ;main.c: 451: while(PORTBbits.RB0 == 1)
+"451
 [e $U 1178  ]
 [e :U 1179 ]
-[; ;main.c: 421: {
-"421
+[; ;main.c: 452: {
+"452
 {
-[; ;main.c: 422: continue;
-"422
+[; ;main.c: 453: continue;
+"453
 [e $U 1178  ]
-"423
+"454
 }
 [e :U 1178 ]
-"420
+"451
 [e $ == -> . . _PORTBbits 0 0 `i -> 1 `i 1179  ]
 [e :U 1180 ]
-[; ;main.c: 423: }
-[; ;main.c: 424: event++;
-"424
+[; ;main.c: 454: }
+[; ;main.c: 455: event++;
+"455
 [e ++ _event -> -> 1 `i `uc ]
-"425
+"456
 }
 [e :U 1177 ]
-[; ;main.c: 425: }
-[; ;main.c: 426: limitWheelSpeeds(&leftWheelMeasuredSpeed, &rightWheelMeasuredSpeed);
-"426
-[e ( _limitWheelSpeeds (2 , &U _leftWheelMeasuredSpeed &U _rightWheelMeasuredSpeed ]
-[; ;main.c: 427: break;
-"427
-[e $U 1153  ]
-"430
+[; ;main.c: 456: }
+[; ;main.c: 457: limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
+"457
+[e ( _limitWheelSpeeds (3 , , &U F7966 &U F7967 &U _speedCompensation ]
+[; ;main.c: 458: break;
+"458
+[e $U 1156  ]
+"461
 }
-[; ;main.c: 430: }
-[e $U 1153  ]
-"308
-[e :U 1154 ]
-[e [\ _event , $ -> -> 0 `i `uc 1155
+[; ;main.c: 461: }
+[e $U 1156  ]
+"331
+[e :U 1157 ]
+[e [\ _event , $ -> -> 0 `i `uc 1158
  , $ -> -> 1 `i `uc 1164
  , $ -> -> 2 `i `uc 1173
- 1153 ]
-"430
-[e :U 1153 ]
-[; ;main.c: 431: }
-"431
-[e :UE 1152 ]
+ 1156 ]
+"461
+[e :U 1156 ]
+[; ;main.c: 462: }
+"462
+[e :UE 1155 ]
 }
-"433
+"464
 [v _configureTimers `(v ~T0 @X0 1 ef ]
-"434
+"465
 {
-[; ;main.c: 433: void configureTimers()
-[; ;main.c: 434: {
+[; ;main.c: 464: void configureTimers()
+[; ;main.c: 465: {
 [e :U _configureTimers ]
 [f ]
-[; ;main.c: 435: (INTCONbits.GIE = 0);
-"435
+[; ;main.c: 466: (INTCONbits.GIE = 0);
+"466
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-[; ;main.c: 437: T1CON = 0;
-"437
-[e = _T1CON -> -> 0 `i `uc ]
-[; ;main.c: 438: T1CONbits.TMR1CS = 0b00;
-"438
-[e = . . _T1CONbits 1 5 -> -> 0 `i `uc ]
-[; ;main.c: 439: T1CONbits.T1CKPS = 0b10;
-"439
-[e = . . _T1CONbits 1 4 -> -> 2 `i `uc ]
-[; ;main.c: 440: T5CON = 0;
-"440
-[e = _T5CON -> -> 0 `i `uc ]
-[; ;main.c: 441: T5CONbits.TMR5CS = 0b00;
-"441
-[e = . . _T5CONbits 1 5 -> -> 0 `i `uc ]
-[; ;main.c: 442: T1CONbits.T1CKPS = 0b10;
-"442
-[e = . . _T1CONbits 1 4 -> -> 2 `i `uc ]
-[; ;main.c: 447: CCP3CON = 0;
-"447
-[e = _CCP3CON -> -> 0 `i `uc ]
-[; ;main.c: 448: CCP2CON = 0;
-"448
-[e = _CCP2CON -> -> 0 `i `uc ]
-[; ;main.c: 449: CCP3CONbits.CCP3M = 0b1010;
-"449
-[e = . . _CCP3CONbits 0 0 -> -> 10 `i `uc ]
-[; ;main.c: 450: CCP2CONbits.CCP2M = 0b1010;
-"450
-[e = . . _CCP2CONbits 0 0 -> -> 10 `i `uc ]
-[; ;main.c: 457: CCPTMRS0bits.C3TSEL = 0;
-"457
-[e = . . _CCPTMRS0bits 0 4 -> -> 0 `i `uc ]
-[; ;main.c: 458: CCPTMRS0bits.C2TSEL = 0b10;
-"458
-[e = . . _CCPTMRS0bits 0 2 -> -> 2 `i `uc ]
-[; ;main.c: 460: CCPR3 = 675;
-"460
-[e = _CCPR3 -> -> 675 `i `us ]
-[; ;main.c: 461: CCPR2 = 675;
-"461
-[e = _CCPR2 -> -> 675 `i `us ]
-[; ;main.c: 463: CCP3IE = 1;
-"463
-[e = _CCP3IE -> -> 1 `i `b ]
-[; ;main.c: 464: CCP2IE = 1;
-"464
-[e = _CCP2IE -> -> 1 `i `b ]
-[; ;main.c: 467: PIE1bits.TMR2IE = 1;
-"467
-[e = . . _PIE1bits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 468: T2CON = 0;
+[; ;main.c: 468: T1CON = 0;
 "468
-[e = _T2CON -> -> 0 `i `uc ]
-[; ;main.c: 469: T2CONbits.T2CKPS = 0b10;
+[e = _T1CON -> -> 0 `i `uc ]
+[; ;main.c: 469: T1CONbits.TMR1CS = 0b00;
 "469
-[e = . . _T2CONbits 0 0 -> -> 2 `i `uc ]
-[; ;main.c: 470: T2CONbits.TMR2ON = 1;
+[e = . . _T1CONbits 1 5 -> -> 0 `i `uc ]
+[; ;main.c: 470: T1CONbits.T1CKPS = 0b10;
 "470
-[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 471: PR2 = 125;
+[e = . . _T1CONbits 1 4 -> -> 2 `i `uc ]
+[; ;main.c: 471: T5CON = 0;
 "471
-[e = _PR2 -> -> 125 `i `uc ]
-[; ;main.c: 477: INTCONbits.GIE = 1;
-"477
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 478: INTCONbits.PEIE = 1;
+[e = _T5CON -> -> 0 `i `uc ]
+[; ;main.c: 472: T5CONbits.TMR5CS = 0b00;
+"472
+[e = . . _T5CONbits 1 5 -> -> 0 `i `uc ]
+[; ;main.c: 473: T5CONbits.T5CKPS = 0b10;
+"473
+[e = . . _T5CONbits 1 4 -> -> 2 `i `uc ]
+[; ;main.c: 478: CCP3CON = 0;
 "478
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 480: TMR1 = 0;
+[e = _CCP3CON -> -> 0 `i `uc ]
+[; ;main.c: 479: CCP2CON = 0;
+"479
+[e = _CCP2CON -> -> 0 `i `uc ]
+[; ;main.c: 480: CCP3CONbits.CCP3M = 0b1010;
 "480
-[e = _TMR1 -> -> 0 `i `us ]
-[; ;main.c: 481: TMR5 = 0;
+[e = . . _CCP3CONbits 0 0 -> -> 10 `i `uc ]
+[; ;main.c: 481: CCP2CONbits.CCP2M = 0b1010;
 "481
-[e = _TMR5 -> -> 0 `i `us ]
-[; ;main.c: 482: TMR1ON = 1;
-"482
-[e = _TMR1ON -> -> 1 `i `b ]
-[; ;main.c: 483: TMR5ON = 1;
-"483
-[e = _TMR5ON -> -> 1 `i `b ]
-[; ;main.c: 485: (INTCONbits.GIE = 1);
-"485
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 487: TRISDbits.TRISD0 = 0;
-"487
-[e = . . _TRISDbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 488: TRISDbits.TRISD1 = 0;
+[e = . . _CCP2CONbits 0 0 -> -> 10 `i `uc ]
+[; ;main.c: 488: CCPTMRS0bits.C3TSEL = 0;
 "488
-[e = . . _TRISDbits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 489: ANSELD = 0;
+[e = . . _CCPTMRS0bits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 489: CCPTMRS0bits.C2TSEL = 0b10;
 "489
-[e = _ANSELD -> -> 0 `i `uc ]
-[; ;main.c: 491: }
+[e = . . _CCPTMRS0bits 0 2 -> -> 2 `i `uc ]
+[; ;main.c: 491: CCPR3 = 675;
 "491
+[e = _CCPR3 -> -> 675 `i `us ]
+[; ;main.c: 492: CCPR2 = 675;
+"492
+[e = _CCPR2 -> -> 675 `i `us ]
+[; ;main.c: 494: CCP3IE = 1;
+"494
+[e = _CCP3IE -> -> 1 `i `b ]
+[; ;main.c: 495: CCP2IE = 1;
+"495
+[e = _CCP2IE -> -> 1 `i `b ]
+[; ;main.c: 498: PIE1bits.TMR2IE = 1;
+"498
+[e = . . _PIE1bits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 499: T2CON = 0;
+"499
+[e = _T2CON -> -> 0 `i `uc ]
+[; ;main.c: 500: T2CONbits.T2CKPS = 0b10;
+"500
+[e = . . _T2CONbits 0 0 -> -> 2 `i `uc ]
+[; ;main.c: 501: T2CONbits.TMR2ON = 1;
+"501
+[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 502: PR2 = 125;
+"502
+[e = _PR2 -> -> 125 `i `uc ]
+[; ;main.c: 508: INTCONbits.GIE = 1;
+"508
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 509: INTCONbits.PEIE = 1;
+"509
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;main.c: 511: TMR1 = 0;
+"511
+[e = _TMR1 -> -> 0 `i `us ]
+[; ;main.c: 512: TMR5 = 0;
+"512
+[e = _TMR5 -> -> 0 `i `us ]
+[; ;main.c: 513: TMR1ON = 1;
+"513
+[e = _TMR1ON -> -> 1 `i `b ]
+[; ;main.c: 514: TMR5ON = 1;
+"514
+[e = _TMR5ON -> -> 1 `i `b ]
+[; ;main.c: 516: (INTCONbits.GIE = 1);
+"516
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 518: TRISDbits.TRISD0 = 0;
+"518
+[e = . . _TRISDbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 519: TRISDbits.TRISD1 = 0;
+"519
+[e = . . _TRISDbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 520: ANSELD = 0;
+"520
+[e = _ANSELD -> -> 0 `i `uc ]
+[; ;main.c: 522: }
+"522
 [e :UE 1181 ]
 }
-"493
+"524
 [v _configureComparators `(v ~T0 @X0 1 ef ]
-"494
+"525
 {
-[; ;main.c: 493: void configureComparators()
-[; ;main.c: 494: {
+[; ;main.c: 524: void configureComparators()
+[; ;main.c: 525: {
 [e :U _configureComparators ]
 [f ]
-[; ;main.c: 497: VREFCON0bits.FVREN=1;
-"497
+[; ;main.c: 528: VREFCON0bits.FVREN=1;
+"528
 [e = . . _VREFCON0bits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 498: VREFCON0bits.FVRST=0;
-"498
+[; ;main.c: 529: VREFCON0bits.FVRST=0;
+"529
 [e = . . _VREFCON0bits 0 2 -> -> 0 `i `uc ]
-[; ;main.c: 499: VREFCON0bits.FVRS=0b01;
-"499
+[; ;main.c: 530: VREFCON0bits.FVRS=0b01;
+"530
 [e = . . _VREFCON0bits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 501: TRISBbits.TRISB1 = 1;
-"501
+[; ;main.c: 532: TRISBbits.TRISB1 = 1;
+"532
 [e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 502: ANSELBbits.ANSB1 = 1;
-"502
+[; ;main.c: 533: ANSELBbits.ANSB1 = 1;
+"533
 [e = . . _ANSELBbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 503: WPUBbits.WPUB1 = 1;
-"503
-[e = . . _WPUBbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 506: CM2CON0bits.C2ON = 1;
-"506
+[; ;main.c: 536: CM2CON0bits.C2ON = 1;
+"536
 [e = . . _CM2CON0bits 0 6 -> -> 1 `i `uc ]
-[; ;main.c: 507: CM2CON0bits.C2OUT = 0;
-"507
+[; ;main.c: 537: CM2CON0bits.C2OUT = 0;
+"537
 [e = . . _CM2CON0bits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 508: CM2CON0bits.C2OE = 0;
-"508
+[; ;main.c: 538: CM2CON0bits.C2OE = 0;
+"538
 [e = . . _CM2CON0bits 0 4 -> -> 0 `i `uc ]
-[; ;main.c: 509: CM2CON0bits.C2POL = 1;
-"509
+[; ;main.c: 539: CM2CON0bits.C2POL = 1;
+"539
 [e = . . _CM2CON0bits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 510: CM2CON0bits.C2SP = 1;
-"510
+[; ;main.c: 540: CM2CON0bits.C2SP = 1;
+"540
 [e = . . _CM2CON0bits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 511: CM2CON0bits.C2R = 1;
-"511
+[; ;main.c: 541: CM2CON0bits.C2R = 1;
+"541
 [e = . . _CM2CON0bits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 512: CM2CON0bits.C2CH = 0b11;
-"512
+[; ;main.c: 542: CM2CON0bits.C2CH = 0b11;
+"542
 [e = . . _CM2CON0bits 0 0 -> -> 3 `i `uc ]
-[; ;main.c: 514: CM2CON1bits.C2RSEL = 1;
-"514
+[; ;main.c: 544: CM2CON1bits.C2RSEL = 1;
+"544
 [e = . . _CM2CON1bits 0 4 -> -> 1 `i `uc ]
-[; ;main.c: 515: CM2CON1bits.C2HYS = 0;
-"515
+[; ;main.c: 545: CM2CON1bits.C2HYS = 0;
+"545
 [e = . . _CM2CON1bits 0 2 -> -> 0 `i `uc ]
-[; ;main.c: 516: CM2CON1bits.C2SYNC = 0;
-"516
+[; ;main.c: 546: CM2CON1bits.C2SYNC = 0;
+"546
 [e = . . _CM2CON1bits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 519: PIR2bits.C2IF = 0;
-"519
+[; ;main.c: 552: TRISBbits.TRISB3 = 1;
+"552
+[e = . . _TRISBbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 553: ANSELBbits.ANSB3 = 1;
+"553
+[e = . . _ANSELBbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 556: CM1CON0bits.C1ON = 1;
+"556
+[e = . . _CM1CON0bits 0 6 -> -> 1 `i `uc ]
+[; ;main.c: 557: CM1CON0bits.C1OUT = 0;
+"557
+[e = . . _CM1CON0bits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 558: CM1CON0bits.C1OE = 0;
+"558
+[e = . . _CM1CON0bits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 559: CM1CON0bits.C1POL = 1;
+"559
+[e = . . _CM1CON0bits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 560: CM1CON0bits.C1SP = 1;
+"560
+[e = . . _CM1CON0bits 0 2 -> -> 1 `i `uc ]
+[; ;main.c: 561: CM1CON0bits.C1R = 1;
+"561
+[e = . . _CM1CON0bits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 562: CM1CON0bits.C1CH = 0b10;
+"562
+[e = . . _CM1CON0bits 0 0 -> -> 2 `i `uc ]
+[; ;main.c: 564: CM2CON1bits.C1RSEL = 1;
+"564
+[e = . . _CM2CON1bits 0 5 -> -> 1 `i `uc ]
+[; ;main.c: 565: CM2CON1bits.C1HYS = 0;
+"565
+[e = . . _CM2CON1bits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 566: CM2CON1bits.C1SYNC = 0;
+"566
+[e = . . _CM2CON1bits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 569: PIR2bits.C1IF = 0;
+"569
+[e = . . _PIR2bits 0 6 -> -> 0 `i `uc ]
+[; ;main.c: 570: PIR2bits.C2IF = 0;
+"570
 [e = . . _PIR2bits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 520: PIE2bits.C2IE = 1;
-"520
+[; ;main.c: 571: PIE2bits.C2IE = 1;
+"571
 [e = . . _PIE2bits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 521: PIE2bits.C1IE = 0;
-"521
-[e = . . _PIE2bits 0 6 -> -> 0 `i `uc ]
-[; ;main.c: 531: }
-"531
+[; ;main.c: 572: PIE2bits.C1IE = 1;
+"572
+[e = . . _PIE2bits 0 6 -> -> 1 `i `uc ]
+[; ;main.c: 582: }
+"582
 [e :UE 1182 ]
 }
 [p f _printf 8421504 ]
 [a 1C 69 118 101 110 116 58 32 37 51 100 0 ]
 [a 2C 83 112 101 101 100 58 32 37 100 0 ]
+[a 4C 32 82 87 58 32 37 100 0 ]
+[a 3C 76 87 58 32 37 100 32 0 ]
