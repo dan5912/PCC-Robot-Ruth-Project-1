@@ -9811,23 +9811,19 @@ break;
 case 2:
 
 
-if(leftWheelCount % 6 == 0)
-{
-leftWheelCount += 1;
-}
 
 if(rightWheelMeasuredSpeed < 20)
 {
 wheelVelocity('r', ++rightWheelCommandedSpeed, speedCompensation);
 wheelVelocity('l', ++leftWheelCommandedSpeed, speedCompensation);
 }
-if((leftWheelCount) > (rightWheelCount + 1) )
+if(round(1.1f * (leftWheelCount)) > (rightWheelCount + 1) )
 
 {
 speedCompensation -= sqrt(leftWheelCount - rightWheelCount);
 wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
 }
-if(rightWheelCount > (leftWheelCount + 1))
+if(rightWheelCount > round(1.1f * (leftWheelCount + 1)))
 
 {
 speedCompensation += sqrt(rightWheelCount - leftWheelCount);
@@ -9869,7 +9865,7 @@ CCP2CON = 0;
 CCP3CONbits.CCP3M = 0b1010;
 CCP2CONbits.CCP2M = 0b1010;
 
-# 535
+# 531
 CCPTMRS0bits.C3TSEL = 0;
 CCPTMRS0bits.C2TSEL = 0b10;
 
@@ -9886,7 +9882,7 @@ T2CONbits.T2CKPS = 0b10;
 T2CONbits.TMR2ON = 1;
 PR2 = 125;
 
-# 555
+# 551
 INTCONbits.GIE = 1;
 INTCONbits.PEIE = 1;
 
@@ -9928,7 +9924,7 @@ CM2CON1bits.C2RSEL = 1;
 CM2CON1bits.C2HYS = 0;
 CM2CON1bits.C2SYNC = 0;
 
-# 600
+# 596
 TRISBbits.TRISB3 = 1;
 ANSELBbits.ANSB3 = 1;
 

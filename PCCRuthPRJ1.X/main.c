@@ -79,7 +79,7 @@
 // <editor-fold defaultstate="collapsed" desc="Defines">
 
 
-#define CIRCLE_FACTOR 6
+#define CIRCLE_FACTOR 1.1f
 #define HYSTERESIS 1
 
 #define BUTTON PORTBbits.RB0    // B0 is pin interrupt INT0
@@ -87,8 +87,8 @@
 #define LEFT_WHEEL_NEUTRAL 745
 #define RIGHT_WHEEL_NEUTRAL 725
 
-#define RIGHT_SPEED_COUNT_RATIO 2.4
-#define LEFT_SPEED_COUNT_RATIO  2.4
+#define RIGHT_SPEED_COUNT_RATIO 5.4
+#define LEFT_SPEED_COUNT_RATIO  5.4
 
 #define TOP_SPEED_FACTOR 2
 
@@ -108,6 +108,9 @@
 
 #define CIRCLE_COMPENSATION_GAIN sqrt(rightWheelCount - leftWheelCount)
 #define CIRCLE_DOWN_COMPENSATION_GAIN sqrt(leftWheelCount - rightWheelCount)
+
+#define CIRCLE_LEFT_GAIN 3
+#define CIRCLE_RIGHT_GAIN 3
 
 #define _XTAL_FREQ 8000000
 // </editor-fold>
@@ -212,7 +215,7 @@ void main(void) {
 
 void limitWheelSpeeds(int* leftWheelSpeed, int* rightWheelSpeed, int* speedCompensation)
 {
-    // Limit wheel speeds to +- 80 for right wheel and +- 100 for left wheel
+    // Limit wheel speeds to +- 60 for right wheel and +- 90 for left wheel
     // This allows left wheel to always be able to go faster or slower than the right 
     // wheel for closed loop control
     if (*leftWheelSpeed >= 60)       
@@ -246,15 +249,15 @@ void wheelVelocity(char wheel, int speed, int speedCompensation)
 {
     if(wheel == 'r')
     {
-        // if speed is 100, temp will be 1000 (1.75ms - forward) , if speed is -100, temp is 625 (1.25ms - reverse)
-        // if speed is 0, speed will be 750 1.5ms (neutral)
+        // if speed is 100, pw will be 1000 (1.75ms - forward) , if speed is -100, pw is 625 (1.25ms - reverse)
+        // if speed is 0, pw will be 750 1.5ms (neutral)
         rightWheelCommandedPW = (int) (RIGHT_WHEEL_NEUTRAL + speed * TOP_SPEED_FACTOR);
     }
     
     if(wheel == 'l')
     {
-        // if speed is 100, temp will be 875 (1.75ms - forward) , if speed is -100, temp is 625 (1.25ms - reverse)
-        // if speed is 0, speed will be 750 1.5ms (neutral)
+        // if speed is 100, pw will be 875 (1.75ms - forward) , if speed is -100, pw is 625 (1.25ms - reverse)
+        // if speed is 0, pw will be 750 1.5ms (neutral)
         leftWheelCommandedPW = (int) (LEFT_WHEEL_NEUTRAL - (speedCompensation + speed * TOP_SPEED_FACTOR));  
     }
 }
@@ -338,20 +341,21 @@ void excerciseControl()
 {
     static int leftWheelCommandedSpeed = 35;        // Commanded Speed for left wheel
     static int rightWheelCommandedSpeed = 25;       // Commanded Speed for right wheel
+    static unsigned long startCircleMillis = 0;
     
     switch(event){
                 case 0:                         // Drive straight forward          
                     // <editor-fold defaultstate="collapsed" desc="drive forward">
                  
                    
-                    if(rightWheelMeasuredSpeed < 20)     // if speed < 10 mm/s increase speed of both wheels
+                    if(rightWheelMeasuredSpeed < 50)     // if speed < 50 mm/s increase speed of both wheels
                     {
                         rightWheelCommandedSpeed += SPEED_GAIN;
                         leftWheelCommandedSpeed += SPEED_GAIN;
                         wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
                         wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
                     }
-                    if(rightWheelMeasuredSpeed > 70)     // if speed > 55 mm/s decrease speed of both wheels
+                    if(rightWheelMeasuredSpeed > 120)     // if speed > 120 mm/s decrease speed of both wheels
                     {
                         rightWheelCommandedSpeed -= SPEED_GAIN;
                         leftWheelCommandedSpeed -= SPEED_GAIN;
@@ -371,9 +375,9 @@ void excerciseControl()
                         wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);     
                     }
                     
-                    if(rightWheelCount >= 115) // Stop after x counts and wait for button press to start next event
+                    if(rightWheelCount >= 113) // Stop after x counts and wait for button press to start next event
                     {   
-                        if(leftWheelCount >= 115)
+                        if(leftWheelCount >= 113)
                         {
                             rightWheelCount = 0;
                             leftWheelCount = 0;
@@ -410,12 +414,12 @@ void excerciseControl()
                     // <editor-fold defaultstate="collapsed" desc="stationary circle">
             
 
-                    if(rightWheelMeasuredSpeed < 15)     // if speed < 10 mm/s increase speed of both wheels (opposite directions)
+                    if(rightWheelMeasuredSpeed < 40)     // if speed < 40 mm/s increase speed of both wheels (opposite directions)
                     {
                         wheelVelocity('r', ++rightWheelCommandedSpeed, speedCompensation);
                         wheelVelocity('l', --leftWheelCommandedSpeed, speedCompensation);
                     }
-                    if(rightWheelMeasuredSpeed > 30)     // if speed > 12 mm/s decrease speed of both wheels
+                    if(rightWheelMeasuredSpeed > 80)     // if speed > 80 mm/s decrease speed of both wheels
                     {
                         wheelVelocity('r', --rightWheelCommandedSpeed, speedCompensation);
                         wheelVelocity('l', ++leftWheelCommandedSpeed, speedCompensation);
@@ -433,9 +437,9 @@ void excerciseControl()
                         wheelVelocity('l', leftWheelCommandedSpeed,speedCompensation);     
                     }
                     
-                    if(rightWheelCount >= 19)  // Stop after x counts and wait for button press to start next event
+                    if(rightWheelCount >= 22)  // Stop after x counts and wait for button press to start next event
                     {
-                        if(leftWheelCount >= 19)
+                        if(leftWheelCount >= 22)
                         {
                             rightWheelCount = 0;
                             leftWheelCount = 0;
@@ -451,6 +455,7 @@ void excerciseControl()
                             {
                                 __delay_ms(50);
                             }
+                            startCircleMillis = elapsedMillis;
                         }
                         else
                         {
@@ -468,30 +473,49 @@ void excerciseControl()
                     
                 case 2:                         // Drive in a circle
                     // <editor-fold defaultstate="collapsed" desc="driving in circles">
-            
-                    if(leftWheelCount % CIRCLE_FACTOR == 0)
+                    
+                    if(rightWheelCount * 133 < (elapsedMillis -  startCircleMillis))
                     {
-                        leftWheelCount += 1;
+                        rightWheelCommandedSpeed += CIRCLE_RIGHT_GAIN;
+                        wheelVelocity('r', rightWheelCommandedSpeed, 0);
                     }
-
-                    if(rightWheelMeasuredSpeed < 20)     // if speed < 20 mm/s increase speed of both wheels
+                    if(leftWheelCount * 123 < (elapsedMillis -  startCircleMillis))
+                    {
+                        leftWheelCommandedSpeed += CIRCLE_LEFT_GAIN;
+                        wheelVelocity('l', rightWheelCommandedSpeed, 0);
+                    }
+                    if(rightWheelCount * 133 > (elapsedMillis -  startCircleMillis))
+                    {
+                        rightWheelCommandedSpeed -= CIRCLE_RIGHT_GAIN;
+                        wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+                    }
+                    if(leftWheelCount * 123 > (elapsedMillis -  startCircleMillis))
+                    {
+                        leftWheelCommandedSpeed -= CIRCLE_LEFT_GAIN;
+                        wheelVelocity('l', rightWheelCommandedSpeed, 0);
+                    }
+                    
+                    
+                    /*if(rightWheelMeasuredSpeed < 20)     // if speed < 20 mm/s increase speed of both wheels
                     {
                         wheelVelocity('r', ++rightWheelCommandedSpeed, speedCompensation);
                         wheelVelocity('l', ++leftWheelCommandedSpeed, speedCompensation);
                     }
-                    if((leftWheelCount) > (rightWheelCount + HYSTERESIS) )    // Adjust left wheel speed to match right
+                    if(round(CIRCLE_FACTOR * (leftWheelCount)) > (rightWheelCount + HYSTERESIS) )    // Adjust left wheel speed to match right
                                                                                                     // with hysteresis
                     {
                         speedCompensation -= CIRCLE_DOWN_COMPENSATION_GAIN;
                         wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
                     }
-                    if(rightWheelCount > (leftWheelCount + HYSTERESIS))    // Adjust left wheel speed to match right
+                    if(rightWheelCount > round(CIRCLE_FACTOR * (leftWheelCount + HYSTERESIS)))    // Adjust left wheel speed to match right
                                                                                                 // with hysteresis
                     {
                         speedCompensation += CIRCLE_COMPENSATION_GAIN;
                         wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);     
-                    }
-                    if(rightWheelCount >= 1000)  // Stop after x counts and wait for button press to start next event
+                    }*/
+                    
+                    
+                    if(rightWheelCount >= 225)  // Stop after x counts and wait for button press to start next event
                     {
                         rightWheelCount = 0;
                         leftWheelCount = 0;

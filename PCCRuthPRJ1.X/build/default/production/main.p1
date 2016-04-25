@@ -125,6 +125,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "156 /Applications/microchip/xc8/v1.36/include/pic18.h
 [v __delay `JF7716 ~T0 @X0 0 e ]
 [p i __delay ]
+"55 /Applications/microchip/xc8/v1.36/include/math.h
+[v _round `(d ~T0 @X0 0 ef1`d ]
 "17489 /Applications/microchip/xc8/v1.36/include/pic18f46k22.h
 [s S1096 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S1096 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
@@ -8824,107 +8826,94 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 469: case 2:
 "469
 [e :U 1181 ]
-[; ;main.c: 472: if(leftWheelCount % 6 == 0)
-"472
-[e $ ! == % _leftWheelCount -> -> -> 6 `i `l `ul -> -> -> 0 `i `l `ul 1182  ]
-[; ;main.c: 473: {
+[; ;main.c: 473: if(rightWheelMeasuredSpeed < 20)
 "473
-{
-[; ;main.c: 474: leftWheelCount += 1;
+[e $ ! < _rightWheelMeasuredSpeed -> 20 `i 1182  ]
+[; ;main.c: 474: {
 "474
-[e =+ _leftWheelCount -> -> -> 1 `i `l `ul ]
+{
+[; ;main.c: 475: wheelVelocity('r', ++rightWheelCommandedSpeed, speedCompensation);
 "475
+[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc =+ F8026 -> 1 `i _speedCompensation ]
+[; ;main.c: 476: wheelVelocity('l', ++leftWheelCommandedSpeed, speedCompensation);
+"476
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc =+ F8025 -> 1 `i _speedCompensation ]
+"477
 }
 [e :U 1182 ]
-[; ;main.c: 475: }
-[; ;main.c: 477: if(rightWheelMeasuredSpeed < 20)
-"477
-[e $ ! < _rightWheelMeasuredSpeed -> 20 `i 1183  ]
-[; ;main.c: 478: {
+[; ;main.c: 477: }
+[; ;main.c: 478: if(round(1.1f * (leftWheelCount)) > (rightWheelCount + 1) )
 "478
-{
-[; ;main.c: 479: wheelVelocity('r', ++rightWheelCommandedSpeed, speedCompensation);
-"479
-[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc =+ F8026 -> 1 `i _speedCompensation ]
-[; ;main.c: 480: wheelVelocity('l', ++leftWheelCommandedSpeed, speedCompensation);
+[e $ ! > ( _round (1 -> * -> .1.1 `f -> _leftWheelCount `f `d -> + _rightWheelCount -> -> -> 1 `i `l `ul `d 1183  ]
+[; ;main.c: 480: {
 "480
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc =+ F8025 -> 1 `i _speedCompensation ]
+{
+[; ;main.c: 481: speedCompensation -= sqrt(leftWheelCount - rightWheelCount);
 "481
+[e =- _speedCompensation ( _sqrt (1 -> - _leftWheelCount _rightWheelCount `d ]
+[; ;main.c: 482: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+"482
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F8025 _speedCompensation ]
+"483
 }
 [e :U 1183 ]
-[; ;main.c: 481: }
-[; ;main.c: 482: if((leftWheelCount) > (rightWheelCount + 1) )
-"482
-[e $ ! > _leftWheelCount + _rightWheelCount -> -> -> 1 `i `l `ul 1184  ]
-[; ;main.c: 484: {
+[; ;main.c: 483: }
+[; ;main.c: 484: if(rightWheelCount > round(1.1f * (leftWheelCount + 1)))
 "484
-{
-[; ;main.c: 485: speedCompensation -= sqrt(leftWheelCount - rightWheelCount);
-"485
-[e =- _speedCompensation ( _sqrt (1 -> - _leftWheelCount _rightWheelCount `d ]
-[; ;main.c: 486: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+[e $ ! > -> _rightWheelCount `d ( _round (1 -> * -> .1.1 `f -> + _leftWheelCount -> -> -> 1 `i `l `ul `f `d 1184  ]
+[; ;main.c: 486: {
 "486
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F8025 _speedCompensation ]
+{
+[; ;main.c: 487: speedCompensation += sqrt(rightWheelCount - leftWheelCount);
 "487
+[e =+ _speedCompensation ( _sqrt (1 -> - _rightWheelCount _leftWheelCount `d ]
+[; ;main.c: 488: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+"488
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F8025 _speedCompensation ]
+"489
 }
 [e :U 1184 ]
-[; ;main.c: 487: }
-[; ;main.c: 488: if(rightWheelCount > (leftWheelCount + 1))
-"488
-[e $ ! > _rightWheelCount + _leftWheelCount -> -> -> 1 `i `l `ul 1185  ]
-[; ;main.c: 490: {
+[; ;main.c: 489: }
+[; ;main.c: 490: if(rightWheelCount >= 1000)
 "490
-{
-[; ;main.c: 491: speedCompensation += sqrt(rightWheelCount - leftWheelCount);
+[e $ ! >= _rightWheelCount -> -> -> 1000 `i `l `ul 1185  ]
+[; ;main.c: 491: {
 "491
-[e =+ _speedCompensation ( _sqrt (1 -> - _rightWheelCount _leftWheelCount `d ]
-[; ;main.c: 492: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+{
+[; ;main.c: 492: rightWheelCount = 0;
 "492
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F8025 _speedCompensation ]
+[e = _rightWheelCount -> -> -> 0 `i `l `ul ]
+[; ;main.c: 493: leftWheelCount = 0;
 "493
+[e = _leftWheelCount -> -> -> 0 `i `l `ul ]
+[; ;main.c: 494: leftWheelCommandedSpeed = 0;
+"494
+[e = F8025 -> 0 `i ]
+[; ;main.c: 495: rightWheelCommandedSpeed = 0;
+"495
+[e = F8026 -> 0 `i ]
+[; ;main.c: 496: wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+"496
+[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc F8026 _speedCompensation ]
+[; ;main.c: 497: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
+"497
+[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F8025 _speedCompensation ]
+[; ;main.c: 498: event++;
+"498
+[e ++ _event -> -> 1 `i `uc ]
+"499
 }
 [e :U 1185 ]
-[; ;main.c: 493: }
-[; ;main.c: 494: if(rightWheelCount >= 1000)
-"494
-[e $ ! >= _rightWheelCount -> -> -> 1000 `i `l `ul 1186  ]
-[; ;main.c: 495: {
-"495
-{
-[; ;main.c: 496: rightWheelCount = 0;
-"496
-[e = _rightWheelCount -> -> -> 0 `i `l `ul ]
-[; ;main.c: 497: leftWheelCount = 0;
-"497
-[e = _leftWheelCount -> -> -> 0 `i `l `ul ]
-[; ;main.c: 498: leftWheelCommandedSpeed = 0;
-"498
-[e = F8025 -> 0 `i ]
-[; ;main.c: 499: rightWheelCommandedSpeed = 0;
-"499
-[e = F8026 -> 0 `i ]
-[; ;main.c: 500: wheelVelocity('r', rightWheelCommandedSpeed, speedCompensation);
+[; ;main.c: 499: }
+[; ;main.c: 500: limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
 "500
-[e ( _wheelVelocity (3 , , -> -> 114 `ui `uc F8026 _speedCompensation ]
-[; ;main.c: 501: wheelVelocity('l', leftWheelCommandedSpeed, speedCompensation);
-"501
-[e ( _wheelVelocity (3 , , -> -> 108 `ui `uc F8025 _speedCompensation ]
-[; ;main.c: 502: event++;
-"502
-[e ++ _event -> -> 1 `i `uc ]
-"503
-}
-[e :U 1186 ]
-[; ;main.c: 503: }
-[; ;main.c: 504: limitWheelSpeeds(&leftWheelCommandedSpeed, &rightWheelCommandedSpeed, &speedCompensation);
-"504
 [e ( _limitWheelSpeeds (3 , , &U F8025 &U F8026 &U _speedCompensation ]
-[; ;main.c: 505: break;
-"505
+[; ;main.c: 501: break;
+"501
 [e $U 1157  ]
-"508
+"504
 }
-[; ;main.c: 508: }
+[; ;main.c: 504: }
 [e $U 1157  ]
 "342
 [e :U 1158 ]
@@ -8932,224 +8921,224 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 1 `i `uc 1170
  , $ -> -> 2 `i `uc 1181
  1157 ]
-"508
+"504
 [e :U 1157 ]
-[; ;main.c: 509: }
-"509
+[; ;main.c: 505: }
+"505
 [e :UE 1156 ]
 }
-"511
+"507
 [v _configureTimers `(v ~T0 @X0 1 ef ]
-"512
+"508
 {
-[; ;main.c: 511: void configureTimers()
-[; ;main.c: 512: {
+[; ;main.c: 507: void configureTimers()
+[; ;main.c: 508: {
 [e :U _configureTimers ]
 [f ]
-[; ;main.c: 513: (INTCONbits.GIE = 0);
-"513
+[; ;main.c: 509: (INTCONbits.GIE = 0);
+"509
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-[; ;main.c: 515: T1CON = 0;
-"515
+[; ;main.c: 511: T1CON = 0;
+"511
 [e = _T1CON -> -> 0 `i `uc ]
-[; ;main.c: 516: T1CONbits.TMR1CS = 0b00;
-"516
+[; ;main.c: 512: T1CONbits.TMR1CS = 0b00;
+"512
 [e = . . _T1CONbits 1 5 -> -> 0 `i `uc ]
-[; ;main.c: 517: T1CONbits.T1CKPS = 0b10;
-"517
+[; ;main.c: 513: T1CONbits.T1CKPS = 0b10;
+"513
 [e = . . _T1CONbits 1 4 -> -> 2 `i `uc ]
-[; ;main.c: 518: T5CON = 0;
-"518
+[; ;main.c: 514: T5CON = 0;
+"514
 [e = _T5CON -> -> 0 `i `uc ]
-[; ;main.c: 519: T5CONbits.TMR5CS = 0b00;
-"519
+[; ;main.c: 515: T5CONbits.TMR5CS = 0b00;
+"515
 [e = . . _T5CONbits 1 5 -> -> 0 `i `uc ]
-[; ;main.c: 520: T5CONbits.T5CKPS = 0b10;
-"520
+[; ;main.c: 516: T5CONbits.T5CKPS = 0b10;
+"516
 [e = . . _T5CONbits 1 4 -> -> 2 `i `uc ]
-[; ;main.c: 525: CCP3CON = 0;
-"525
+[; ;main.c: 521: CCP3CON = 0;
+"521
 [e = _CCP3CON -> -> 0 `i `uc ]
-[; ;main.c: 526: CCP2CON = 0;
-"526
+[; ;main.c: 522: CCP2CON = 0;
+"522
 [e = _CCP2CON -> -> 0 `i `uc ]
-[; ;main.c: 527: CCP3CONbits.CCP3M = 0b1010;
-"527
+[; ;main.c: 523: CCP3CONbits.CCP3M = 0b1010;
+"523
 [e = . . _CCP3CONbits 0 0 -> -> 10 `i `uc ]
-[; ;main.c: 528: CCP2CONbits.CCP2M = 0b1010;
-"528
+[; ;main.c: 524: CCP2CONbits.CCP2M = 0b1010;
+"524
 [e = . . _CCP2CONbits 0 0 -> -> 10 `i `uc ]
-[; ;main.c: 535: CCPTMRS0bits.C3TSEL = 0;
-"535
+[; ;main.c: 531: CCPTMRS0bits.C3TSEL = 0;
+"531
 [e = . . _CCPTMRS0bits 0 4 -> -> 0 `i `uc ]
-[; ;main.c: 536: CCPTMRS0bits.C2TSEL = 0b10;
-"536
+[; ;main.c: 532: CCPTMRS0bits.C2TSEL = 0b10;
+"532
 [e = . . _CCPTMRS0bits 0 2 -> -> 2 `i `uc ]
-[; ;main.c: 538: CCPR3 = 675;
-"538
+[; ;main.c: 534: CCPR3 = 675;
+"534
 [e = _CCPR3 -> -> 675 `i `us ]
-[; ;main.c: 539: CCPR2 = 675;
-"539
+[; ;main.c: 535: CCPR2 = 675;
+"535
 [e = _CCPR2 -> -> 675 `i `us ]
-[; ;main.c: 541: CCP3IE = 1;
-"541
+[; ;main.c: 537: CCP3IE = 1;
+"537
 [e = _CCP3IE -> -> 1 `i `b ]
-[; ;main.c: 542: CCP2IE = 1;
-"542
+[; ;main.c: 538: CCP2IE = 1;
+"538
 [e = _CCP2IE -> -> 1 `i `b ]
-[; ;main.c: 545: PIE1bits.TMR2IE = 1;
-"545
+[; ;main.c: 541: PIE1bits.TMR2IE = 1;
+"541
 [e = . . _PIE1bits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 546: T2CON = 0;
-"546
+[; ;main.c: 542: T2CON = 0;
+"542
 [e = _T2CON -> -> 0 `i `uc ]
-[; ;main.c: 547: T2CONbits.T2CKPS = 0b10;
-"547
+[; ;main.c: 543: T2CONbits.T2CKPS = 0b10;
+"543
 [e = . . _T2CONbits 0 0 -> -> 2 `i `uc ]
-[; ;main.c: 548: T2CONbits.TMR2ON = 1;
-"548
+[; ;main.c: 544: T2CONbits.TMR2ON = 1;
+"544
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 549: PR2 = 125;
-"549
+[; ;main.c: 545: PR2 = 125;
+"545
 [e = _PR2 -> -> 125 `i `uc ]
-[; ;main.c: 555: INTCONbits.GIE = 1;
-"555
+[; ;main.c: 551: INTCONbits.GIE = 1;
+"551
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 556: INTCONbits.PEIE = 1;
-"556
+[; ;main.c: 552: INTCONbits.PEIE = 1;
+"552
 [e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 558: TMR1 = 0;
-"558
+[; ;main.c: 554: TMR1 = 0;
+"554
 [e = _TMR1 -> -> 0 `i `us ]
-[; ;main.c: 559: TMR5 = 0;
-"559
+[; ;main.c: 555: TMR5 = 0;
+"555
 [e = _TMR5 -> -> 0 `i `us ]
-[; ;main.c: 560: TMR1ON = 1;
-"560
+[; ;main.c: 556: TMR1ON = 1;
+"556
 [e = _TMR1ON -> -> 1 `i `b ]
-[; ;main.c: 561: TMR5ON = 1;
-"561
+[; ;main.c: 557: TMR5ON = 1;
+"557
 [e = _TMR5ON -> -> 1 `i `b ]
-[; ;main.c: 563: (INTCONbits.GIE = 1);
-"563
+[; ;main.c: 559: (INTCONbits.GIE = 1);
+"559
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 565: TRISDbits.TRISD0 = 0;
-"565
+[; ;main.c: 561: TRISDbits.TRISD0 = 0;
+"561
 [e = . . _TRISDbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 566: TRISDbits.TRISD1 = 0;
-"566
+[; ;main.c: 562: TRISDbits.TRISD1 = 0;
+"562
 [e = . . _TRISDbits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 567: ANSELD = 0;
-"567
+[; ;main.c: 563: ANSELD = 0;
+"563
 [e = _ANSELD -> -> 0 `i `uc ]
-[; ;main.c: 569: }
-"569
-[e :UE 1187 ]
+[; ;main.c: 565: }
+"565
+[e :UE 1186 ]
 }
-"571
+"567
 [v _configureComparators `(v ~T0 @X0 1 ef ]
-"572
+"568
 {
-[; ;main.c: 571: void configureComparators()
-[; ;main.c: 572: {
+[; ;main.c: 567: void configureComparators()
+[; ;main.c: 568: {
 [e :U _configureComparators ]
 [f ]
-[; ;main.c: 575: VREFCON0bits.FVREN=1;
-"575
+[; ;main.c: 571: VREFCON0bits.FVREN=1;
+"571
 [e = . . _VREFCON0bits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 576: VREFCON0bits.FVRST=0;
-"576
+[; ;main.c: 572: VREFCON0bits.FVRST=0;
+"572
 [e = . . _VREFCON0bits 0 2 -> -> 0 `i `uc ]
-[; ;main.c: 577: VREFCON0bits.FVRS=0b01;
-"577
+[; ;main.c: 573: VREFCON0bits.FVRS=0b01;
+"573
 [e = . . _VREFCON0bits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 579: TRISBbits.TRISB1 = 1;
-"579
+[; ;main.c: 575: TRISBbits.TRISB1 = 1;
+"575
 [e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 580: ANSELBbits.ANSB1 = 1;
-"580
+[; ;main.c: 576: ANSELBbits.ANSB1 = 1;
+"576
 [e = . . _ANSELBbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 584: CM2CON0bits.C2ON = 1;
-"584
+[; ;main.c: 580: CM2CON0bits.C2ON = 1;
+"580
 [e = . . _CM2CON0bits 0 6 -> -> 1 `i `uc ]
-[; ;main.c: 585: CM2CON0bits.C2OUT = 0;
-"585
+[; ;main.c: 581: CM2CON0bits.C2OUT = 0;
+"581
 [e = . . _CM2CON0bits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 586: CM2CON0bits.C2OE = 0;
-"586
+[; ;main.c: 582: CM2CON0bits.C2OE = 0;
+"582
 [e = . . _CM2CON0bits 0 4 -> -> 0 `i `uc ]
-[; ;main.c: 587: CM2CON0bits.C2POL = 1;
-"587
+[; ;main.c: 583: CM2CON0bits.C2POL = 1;
+"583
 [e = . . _CM2CON0bits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 588: CM2CON0bits.C2SP = 1;
-"588
+[; ;main.c: 584: CM2CON0bits.C2SP = 1;
+"584
 [e = . . _CM2CON0bits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 589: CM2CON0bits.C2R = 1;
-"589
+[; ;main.c: 585: CM2CON0bits.C2R = 1;
+"585
 [e = . . _CM2CON0bits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 590: CM2CON0bits.C2CH = 0b11;
-"590
+[; ;main.c: 586: CM2CON0bits.C2CH = 0b11;
+"586
 [e = . . _CM2CON0bits 0 0 -> -> 3 `i `uc ]
-[; ;main.c: 592: CM2CON1bits.C2RSEL = 1;
-"592
+[; ;main.c: 588: CM2CON1bits.C2RSEL = 1;
+"588
 [e = . . _CM2CON1bits 0 4 -> -> 1 `i `uc ]
-[; ;main.c: 593: CM2CON1bits.C2HYS = 0;
-"593
+[; ;main.c: 589: CM2CON1bits.C2HYS = 0;
+"589
 [e = . . _CM2CON1bits 0 2 -> -> 0 `i `uc ]
-[; ;main.c: 594: CM2CON1bits.C2SYNC = 0;
-"594
+[; ;main.c: 590: CM2CON1bits.C2SYNC = 0;
+"590
 [e = . . _CM2CON1bits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 600: TRISBbits.TRISB3 = 1;
-"600
+[; ;main.c: 596: TRISBbits.TRISB3 = 1;
+"596
 [e = . . _TRISBbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 601: ANSELBbits.ANSB3 = 1;
-"601
+[; ;main.c: 597: ANSELBbits.ANSB3 = 1;
+"597
 [e = . . _ANSELBbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 604: CM1CON0bits.C1ON = 1;
-"604
+[; ;main.c: 600: CM1CON0bits.C1ON = 1;
+"600
 [e = . . _CM1CON0bits 0 6 -> -> 1 `i `uc ]
-[; ;main.c: 605: CM1CON0bits.C1OUT = 0;
-"605
+[; ;main.c: 601: CM1CON0bits.C1OUT = 0;
+"601
 [e = . . _CM1CON0bits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 606: CM1CON0bits.C1OE = 0;
-"606
+[; ;main.c: 602: CM1CON0bits.C1OE = 0;
+"602
 [e = . . _CM1CON0bits 0 4 -> -> 0 `i `uc ]
-[; ;main.c: 607: CM1CON0bits.C1POL = 1;
-"607
+[; ;main.c: 603: CM1CON0bits.C1POL = 1;
+"603
 [e = . . _CM1CON0bits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 608: CM1CON0bits.C1SP = 1;
-"608
+[; ;main.c: 604: CM1CON0bits.C1SP = 1;
+"604
 [e = . . _CM1CON0bits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 609: CM1CON0bits.C1R = 1;
-"609
+[; ;main.c: 605: CM1CON0bits.C1R = 1;
+"605
 [e = . . _CM1CON0bits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 610: CM1CON0bits.C1CH = 0b10;
-"610
+[; ;main.c: 606: CM1CON0bits.C1CH = 0b10;
+"606
 [e = . . _CM1CON0bits 0 0 -> -> 2 `i `uc ]
-[; ;main.c: 612: CM2CON1bits.C1RSEL = 1;
-"612
+[; ;main.c: 608: CM2CON1bits.C1RSEL = 1;
+"608
 [e = . . _CM2CON1bits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 613: CM2CON1bits.C1HYS = 0;
-"613
+[; ;main.c: 609: CM2CON1bits.C1HYS = 0;
+"609
 [e = . . _CM2CON1bits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 614: CM2CON1bits.C1SYNC = 0;
-"614
+[; ;main.c: 610: CM2CON1bits.C1SYNC = 0;
+"610
 [e = . . _CM2CON1bits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 617: PIR2bits.C1IF = 0;
-"617
+[; ;main.c: 613: PIR2bits.C1IF = 0;
+"613
 [e = . . _PIR2bits 0 6 -> -> 0 `i `uc ]
-[; ;main.c: 618: PIR2bits.C2IF = 0;
-"618
+[; ;main.c: 614: PIR2bits.C2IF = 0;
+"614
 [e = . . _PIR2bits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 619: PIE2bits.C2IE = 1;
-"619
+[; ;main.c: 615: PIE2bits.C2IE = 1;
+"615
 [e = . . _PIE2bits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 620: PIE2bits.C1IE = 1;
-"620
+[; ;main.c: 616: PIE2bits.C1IE = 1;
+"616
 [e = . . _PIE2bits 0 6 -> -> 1 `i `uc ]
-[; ;main.c: 623: }
-"623
-[e :UE 1188 ]
+[; ;main.c: 619: }
+"619
+[e :UE 1187 ]
 }
 [p f _printf 8421504 ]
 [a 1C 69 118 101 110 116 58 32 37 51 100 0 ]
